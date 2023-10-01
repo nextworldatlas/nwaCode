@@ -1,16 +1,12 @@
 // SiteNavBar.js
 import "./index.css"
 import "./navbar.css"
+import './sidemenu.css'
 import { Button } from '@mui/material'
 import LocalGroceryStoreTwoToneIcon from '@mui/icons-material/LocalGroceryStoreTwoTone'
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone'
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone'
 import { FormGroup, FormControlLabel, Switch } from '@mui/material'
-
-  // menu-button element
-  const menuButtonStyle = { 
-    width: '100%'
-  }
 
   // right-menu element
   const rightMenuStyle = { 
@@ -35,7 +31,7 @@ const SiteNavBar = ({showTutorial, setShowTutorial, showLabels, setShowLabels}) 
         </div>
       </Button>
       <div className="add-node-vertical" >
-        <Button size="small" color="primary" aria-label="controls menu" style={{padding: '1px'}} href="https://www.etsy.com/shop/nextworldatlas">
+        <Button size="small" color="primary" aria-label="controls menu" style={{padding: '1px'}} >
           <div className="navbar-text">
             <SettingsTwoToneIcon fontSize="small"/>
             <div>Controls</div>
