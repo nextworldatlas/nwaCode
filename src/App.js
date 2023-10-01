@@ -2,7 +2,6 @@ import React, { useRef, useEffect, useState } from 'react'
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import Tutorial from './Tutorial'
 import SiteNavBar from './SiteNavBar';
-import { FormGroup, FormControlLabel, Switch } from '@mui/material'
 import mapImages from './image-json.json'
 import pointGeoJSON from './point-geojson.json'
 import mapSources from './source-json.json'
@@ -13,7 +12,7 @@ import './tutorial.css'
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_KEY
 
 export default function App() {
-  const [showLabels, setShowLabels] = useState(true)
+  const [showLabels, setShowLabels] = useState(false)
   const [showTutorial, setShowTutorial] = useState(true)
   const [tutorialWindow, setTutorialWindow] = useState(0)
   const [defaultyear, setDefaultYear] = useState(1750)
@@ -269,14 +268,8 @@ export default function App() {
 
   return (
     <>
-    <SiteNavBar />
-    <div style={{display: 'flex', justifyContent: 'right'}}>
-      <FormGroup>
-        <FormControlLabel control={<Switch checked={showTutorial} onChange={()=>setShowTutorial(prev=>!prev)}/>} label="Tutorial" />
-        <FormControlLabel control={<Switch checked={showLabels}   onChange={()=>setShowLabels(prev=>!prev)} />} label="Modern Country Labels" />
-      </FormGroup>
-    </div>
-    <div>
+    <SiteNavBar showTutorial={showTutorial} setShowTutorial={setShowTutorial} showLabels={showLabels} setShowLabels={setShowLabels} />
+    <div style={{display: 'inline'}}>
       <div ref={mapContainer} className="map-container" />
 
       <div className="map-overlay top">
@@ -306,17 +299,13 @@ export default function App() {
             </video>
           </div>
           <div className="instruction-box">
-            <h1>Tutorial window # 1</h1>
-            Text for the instruction box. This is a placeholder instruction box text that should be replaced with instructions
+            <h1>Slide Historical Timeline to change map</h1>
             <ul>
               <li>
-                perform action 1
+                Borders shift to show historical civilizations
               </li>
               <li>
-                perform action 2
-              </li>
-              <li>
-                perform action 3
+                250 year increments from 0-2000
               </li>
             </ul>
           </div>
@@ -335,17 +324,13 @@ export default function App() {
             </video>
           </div>
           <div className="instruction-box">
-            <h1>Tutorial window # 2</h1>
-            Text for the instruction box. This is a placeholder instruction box text that should be replaced with instructions
+            <h1>Click on map markers to open short video</h1>
             <ul>
               <li>
-                perform action 1
+                Blue markers are videos about site / civilization
               </li>
               <li>
-                perform action 2
-              </li>
-              <li>
-                perform action 3
+                Grey icons are Wikipedia links, video coming soon
               </li>
             </ul>
           </div>
@@ -364,17 +349,13 @@ export default function App() {
             </video>
           </div>
           <div className="instruction-box">
-            <h1>Tutorial window # 3</h1>
-            Text for the instruction box. This is a placeholder instruction box text that should be replaced with instructions
+            <h1>Explore the map! Click on terrritories for names</h1>
             <ul>
               <li>
-                perform action 1
+                Each colored territory has a marker, may need to zoom in more
               </li>
               <li>
-                perform action 2
-              </li>
-              <li>
-                perform action 3
+                Grey areas are undefined territory, because tribes
               </li>
             </ul>
           </div>

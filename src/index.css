@@ -19,7 +19,7 @@ body {
 }
 
 .map-overlay {
-  font: 12px/20px 'Helvetica Neue', Arial, Helvetica, sans-serif;
+  font: 12px/20px 'Arial Unicode MS Bold', Arial, Helvetica, sans-serif;
   position: absolute;
   width: 25%;
   top: 40px;
@@ -118,7 +118,7 @@ body {
   background-image: linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05));
   padding: 5px;
   text-align: right;
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: 'Arial Unicode MS Bold',
     monospace;
 }
 

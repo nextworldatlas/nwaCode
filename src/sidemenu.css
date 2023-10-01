@@ -1,0 +1,111 @@
+.add-node-vertical{
+  position: relative;
+  display: inline-block;
+  color: #aaa;
+  padding: 0 0px;
+  color: black;
+}
+
+.add-node > .right-menu  > .sublist   {
+  position: relative;
+  display: inline-block;
+  color: #aaa;
+  padding: 0 0px;
+  margin-right: 0px;
+}
+
+.add-node-vertical > .right-menu  > .sublist   {
+  position: relative;
+  display: inline-block;
+  color: #aaa;
+  padding: 0 0px;
+  margin-right: 0px;
+}
+
+/*ul.main > li > ul {*/
+.add-node > .right-menu{
+  transition: opacity 200ms, display 200ms;
+  opacity: 0;
+  display: none;
+  list-style-type: none;
+  padding-inline-start: 0px;
+  margin-block-start: 0px;
+  justify-content: 'flex-start';
+  padding-top: 5px;
+}
+
+.add-node-vertical > .right-menu{
+  transition: opacity 200ms, display 200ms;
+  position: absolute;
+  opacity: 0;
+  display: none;
+  list-style-type: none;
+  padding-left: 5px;
+  margin-block-start: 0px;
+}
+
+.add-node  > .right-menu > .sublist  > .right-menu {
+transition: opacity 200ms, display 200ms;
+opacity: 0;
+  display: none;
+  list-style-type: none;
+  padding-inline-start: 0px;
+  margin-block-start: 0px;
+  justify-content: 'flex-start';
+}
+
+.add-node-vertical  > .right-menu > .sublist  > .right-menu {
+  transition: opacity 200ms, display 200ms;
+  position: absolute;
+  opacity: 0;
+  display: none;
+  list-style-type: none;
+  padding-inline-start: 0px;
+  margin-block-start: 0px;
+}
+
+
+.add-node:hover > .right-menu{
+  display: inline-flex;
+  flex-direction: column;
+  position: absolute;
+  width: 200px;
+  background: inherit;
+  align-content: flex-start;
+  opacity: 1;
+}
+
+.add-node-vertical:hover > .right-menu{
+  display: block;
+  flex-direction: column;
+  position: absolute;
+  width: 200px;
+  background: inherit;
+  align-content: flex-start;
+  opacity: 1;
+}
+
+.add-node  > .right-menu > .sublist:hover  > .right-menu {
+  display: inline-flex;
+  flex-direction: column;
+  position: absolute;
+  width: 200px;
+  align-content: flex-start;
+  opacity: 1;
+}
+
+.add-node-vertical  > .right-menu > .sublist:hover  > .right-menu {
+  display: inline-flex;
+  flex-direction: column;
+  position: absolute;
+  width: 200px;
+  background: inherit;
+  align-content: flex-start;
+  opacity: 1;
+}
+
+.menu-button {
+text-align: left;
+display: inline-flex;
+justify-content: flex-start !important;
+}
