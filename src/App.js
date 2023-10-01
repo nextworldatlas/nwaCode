@@ -61,10 +61,10 @@ export default function App() {
 
       
       mapLayersFill.forEach((v, i)=> {
-        map.current.addLayer(v)
+        map.current.addLayer(v, 'country_label')
       })
       mapLayersLine.forEach((v, i)=> {
-        map.current.addLayer(v)
+        map.current.addLayer(v, 'country_label')
       })
 
       // Load multiple images to use as custom markers
@@ -251,7 +251,12 @@ export default function App() {
   useEffect(()=>{
     if(map.current && isStyleLoaded){
       filterBy(defaultyear)
-      map.current.style.stylesheet.layers.forEach(l => { if (l.type == "symbol") map.current.setLayoutProperty(l.id, "visibility", showLabels?"visible":"none") })
+      map.current.style.stylesheet.layers.forEach(l => { 
+        if (l.type == "symbol") {
+          map.current.setLayoutProperty(l.id, "visibility", showLabels?"visible":"none") 
+          map.current.setLayoutProperty(l.id, "symbol-sort-key", showLabels?10:0) 
+        }
+      })
     }
 
     // Change color of slider background based upon the position of the slider
@@ -262,7 +267,6 @@ export default function App() {
     } else {
       sliderElement.style.background = 'linear-gradient(to right, #82CFD0 '+ value *0.4+'%, #00008B ' + value + '%, #fff ' + value + '%, white 100%)'
     }
-
 
   }, [map.current, defaultyear, showLabels])
 
