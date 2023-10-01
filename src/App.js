@@ -61,10 +61,10 @@ export default function App() {
 
       
       mapLayersFill.forEach((v, i)=> {
-        map.current.addLayer(v)
+        map.current.addLayer(v, 'country-label')
       })
       mapLayersLine.forEach((v, i)=> {
-        map.current.addLayer(v)
+        map.current.addLayer(v, 'country-label')
       })
 
       // Load multiple images to use as custom markers
@@ -246,6 +246,19 @@ export default function App() {
     mapLayersLine.forEach((v, i)=>{
       map.current.setFilter(v.id, filters)
     })
+
+    
+    /*map.current.addLayer({
+      "id": "country-label",
+      "type": "symbol",
+      "source": "composite",
+      "source-layer": "place_label",
+      "filter": [
+        "==",
+        [ "get", "class" ],
+        "country"
+      ]
+    })*/
   }
 
   useEffect(()=>{
@@ -253,8 +266,10 @@ export default function App() {
       filterBy(defaultyear)
       map.current.style.stylesheet.layers.forEach(l => { 
         if (l.type == "symbol") {
-          map.current.setLayoutProperty(l.id, "visibility", showLabels?"visible":"none") 
-          map.current.setLayoutProperty(l.id, "symbol-sort-key", showLabels?10:0) 
+          if(l.id === "country-label")
+            map.current.setLayoutProperty(l.id, "visibility", showLabels?"visible":"none") 
+          else
+            map.current.setLayoutProperty(l.id, "visibility", "none") 
         }
       })
     }
