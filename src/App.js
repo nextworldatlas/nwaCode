@@ -61,10 +61,10 @@ export default function App() {
 
       
       mapLayersFill.forEach((v, i)=> {
-        map.current.addLayer(v, 'country_label')
+        map.current.addLayer(v)
       })
       mapLayersLine.forEach((v, i)=> {
-        map.current.addLayer(v, 'country_label')
+        map.current.addLayer(v)
       })
 
       // Load multiple images to use as custom markers
