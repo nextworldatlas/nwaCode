@@ -14,7 +14,8 @@
                       "yearstart": 1700,
                       "yearend": 1800,
                       "title": "British America",
-                      "link": "https://www.example.com/britishamerica"
+                      "link": "https://www.example.com/britishamerica",
+                      "png": "USA.png"
                   }
               },
               {
@@ -27,7 +28,8 @@
                       "yearstart": 1900,
                       "yearend": 2100,
                       "title": "USA",
-                      "link": "https://www.example.com/usa"
+                      "link": "https://www.example.com/usa",
+                      "png": "USA.png"
                   }
               },
               {
@@ -40,7 +42,8 @@
                       "yearstart": 1900,
                       "yearend": 2100,
                       "title": "Discovering Antarctica",
-                      "link": "https://www.example.com/machu-picchu-base"
+                      "link": "https://www.example.com/machu-picchu-base",
+                      "png": "Antarctica.png"
                   }
               },
               {
@@ -53,7 +56,8 @@
                       "yearstart": -100,
                       "yearend": 600,
                       "title": "Hopewell Culture",
-                      "link": "https://en.wikipedia.org/wiki/Hopewell_tradition"
+                      "link": "https://en.wikipedia.org/wiki/Hopewell_tradition",
+                      "png": "Hopewell.png"
                   }
               },
               {
@@ -66,7 +70,8 @@
                       "yearstart": -100,
                       "yearend": 100,
                       "title": "Teotihuacan",
-                      "link": "https://www.example.com/teotihuacan"
+                      "link": "https://www.example.com/teotihuacan",
+                      "png": "Teotihuacan.png"
                   }
               },
               {
@@ -79,7 +84,8 @@
                       "yearstart": 200,
                       "yearend": 1100,
                       "title": "Mayans",
-                      "link": "https://www.example.com/chichenitza"
+                      "link": "https://www.example.com/chichenitza",
+                      "png": "Mayans.png"
                   }
               },
               {
@@ -92,7 +98,8 @@
                       "yearstart": 1400,
                       "yearend": 1600,
                       "title": "Aztec Empire",
-                      "link": "https://www.example.com/mexicocity"
+                      "link": "https://www.example.com/mexicocity",
+                      "png": "Aztec.png"
                   }
               },
               {
@@ -105,7 +112,8 @@
                       "yearstart": 1700,
                       "yearend": 1800,
                       "title": "Spanish Mexico",
-                      "link": "https://www.example.com/spanishmexico"
+                      "link": "https://www.example.com/spanishmexico",
+                      "png": "Spanish America.png"
                   }
               },
               {
@@ -118,7 +126,8 @@
                       "yearstart": 1900,
                       "yearend": 2100,
                       "title": "Mexico",
-                      "link": "https://www.example.com/moderndaymexico"
+                      "link": "https://www.example.com/moderndaymexico",
+                      "png": "Mexico.png"
                   }
               },
               {
@@ -131,7 +140,8 @@
                       "yearstart": 1400,
                       "yearend": 1800,
                       "title": "Spanish Puerto Rico",
-                      "link": "https://www.example.com/spanishpuertorico"
+                      "link": "https://www.example.com/spanishpuertorico",
+                      "png": "Puerto Rico.png"
                   }
               },
               {
@@ -144,7 +154,8 @@
                       "yearstart": 1900,
                       "yearend": 2100,
                       "title": "Puerto Rico",
-                      "link": "https://www.example.com/uspuertorico"
+                      "link": "https://www.example.com/uspuertorico",
+                      "png": "Puerto Rico.png"
                   }
               },
               {
@@ -157,7 +168,8 @@
                       "yearstart": 1400,
                       "yearend": 1800,
                       "title": "Colonial Brazil",
-                      "link": "https://www.example.com/salvador"
+                      "link": "https://www.example.com/salvador",
+                      "png": "Brazil.png"
                   }
               },
               {
@@ -170,7 +182,8 @@
                       "yearstart": 1900,
                       "yearend": 2100,
                       "title": "Brazil",
-                      "link": "https://www.example.com/rio"
+                      "link": "https://www.example.com/rio",
+                      "png": "Brazil.png"
                   }
               },
               {
@@ -183,7 +196,8 @@
                       "yearstart": -100,
                       "yearend": 300,
                       "title": "Roman London",
-                      "link": "https://www.example.com/london"
+                      "link": "https://www.example.com/london",
+                      "png": "London Rome.png"
                   }
               },
               {
@@ -196,7 +210,8 @@
                       "yearstart": 900,
                       "yearend": 1300,
                       "title": "Medieval London",
-                      "link": "https://www.example.com/london"
+                      "link": "https://www.example.com/london",
+                      "png": "London Tower.png"
                   }
               },
               {
@@ -209,7 +224,8 @@
                       "yearstart": 1700,
                       "yearend": 1800,
                       "title": "Victorian London",
-                      "link": "https://www.example.com/london"
+                      "link": "https://www.example.com/london",
+                      "png": "London Victorian.png"
                   }
               },
               {
@@ -222,7 +238,8 @@
                       "yearstart": 1900,
                       "yearend": 2100,
                       "title": "London",
-                      "link": "https://www.example.com/london"
+                      "link": "https://www.example.com/london",
+                      "png": "London Westminster.png"
                   }
               },
               {
@@ -235,7 +252,8 @@
                       "yearstart": 700,
                       "yearend": 1300,
                       "title": "Islamic Spain",
-                      "link": "https://www.example.com/alhambra"
+                      "link": "https://www.example.com/alhambra",
+                      "png": "Alhambra.png"
                   }
               },
               {
@@ -248,7 +266,8 @@
                       "yearstart": 1900,
                       "yearend": 2100,
                       "title": "Islamic Spain",
-                      "link": "https://www.example.com/alhambra"
+                      "link": "https://www.example.com/alhambra",
+                      "png": "Alhambra.png"
                   }
               },
               {
@@ -261,7 +280,8 @@
                       "yearstart": 900,
                       "yearend": 1300,
                       "title": "Medieval Paris",
-                      "link": "https://www.example.com/medievalparis"
+                      "link": "https://www.example.com/medievalparis",
+                      "png": "Notre Dame.png"
                   }
               },
               {
@@ -274,7 +294,8 @@
                       "yearstart": 1900,
                       "yearend": 2100,
                       "title": "Paris",
-                      "link": "https://www.example.com/medievalparis"
+                      "link": "https://www.example.com/medievalparis",
+                      "png": "Notre Dame.png"
                   }
               },
               {
@@ -287,7 +308,8 @@
                       "yearstart": -100,
                       "yearend": 300,
                       "title": "Roman Empire",
-                      "link": "https://www.example.com/rome"
+                      "link": "https://www.example.com/rome",
+                      "png": "Rome.png"
                   }
               },
               {
@@ -300,7 +322,8 @@
                       "yearstart": 700,
                       "yearend": 800,
                       "title": "Venice City-State",
-                      "link": "https://www.example.com/venice"
+                      "link": "https://www.example.com/venice",
+                      "png": "Italy Venice.png"
                   }
               },
               {
@@ -313,7 +336,8 @@
                       "yearstart": 1200,
                       "yearend": 1300,
                       "title": "Early Renaissance Italy",
-                      "link": "https://www.example.com/pisa"
+                      "link": "https://www.example.com/pisa",
+                      "png": "Italy Pisa.png"
                   }
               },
               {
@@ -326,7 +350,8 @@
                       "yearstart": 1400,
                       "yearend": 1600,
                       "title": "Renaissance Italy",
-                      "link": "https://www.example.com/florence"
+                      "link": "https://www.example.com/florence",
+                      "png": "Italy Florence.png"
                   }
               },
               {
@@ -339,7 +364,8 @@
                       "yearstart": 1700,
                       "yearend": 1800,
                       "title": "Baroque Italy",
-                      "link": "https://www.example.com/rome"
+                      "link": "https://www.example.com/rome",
+                      "png": "Italy Vatican.png"
                   }
               },
               {
@@ -352,7 +378,8 @@
                       "yearstart": 1900,
                       "yearend": 2100,
                       "title": "Italy",
-                      "link": "https://www.example.com/rome"
+                      "link": "https://www.example.com/rome",
+                      "png": "Italy Vatican.png"
                   }
               },
               {
@@ -365,7 +392,8 @@
                       "yearstart": 1200,
                       "yearend": 1600,
                       "title": "Holy Roman Empire",
-                      "link": "https://en.wikipedia.org/wiki/Holy_Roman_Empire"
+                      "link": "https://en.wikipedia.org/wiki/Holy_Roman_Empire",
+                      "png": "HolyRomanEmpire.png"
                   }
               },
               {
@@ -378,7 +406,8 @@
                       "yearstart": 400,
                       "yearend": 1300,
                       "title": "Byzantine Empire",
-                      "link": "https://en.wikipedia.org/wiki/Byzantine_Empire"
+                      "link": "https://en.wikipedia.org/wiki/Byzantine_Empire",
+                      "png": "Byzantine.png"
                   }
               },
               {
@@ -391,7 +420,8 @@
                       "yearstart": 200,
                       "yearend": 1100,
                       "title": "Timbuktu, Ghana Empire",
-                      "link": "https://www.example.com/ghanaempire"
+                      "link": "https://www.example.com/ghanaempire",
+                      "png": "Timbuktu.png"
                   }
               },
               {
@@ -404,7 +434,8 @@
                       "yearstart": 1200,
                       "yearend": 1300,
                       "title": "Timbuktu, Mali Empire",
-                      "link": "https://www.example.com/maliempire"
+                      "link": "https://www.example.com/maliempire",
+                      "png": "Timbuktu.png"
                   }
               },
               {
@@ -417,7 +448,8 @@
                       "yearstart": 1400,
                       "yearend": 1600,
                       "title": "Timbuktu, Songhai Empire",
-                      "link": "https://www.example.com/songhaiempire"
+                      "link": "https://www.example.com/songhaiempire",
+                      "png": "Timbuktu.png"
                   }
               },
               {
@@ -430,7 +462,8 @@
                       "yearstart": 1900,
                       "yearend": 2100,
                       "title": "Timbuktu",
-                      "link": "https://www.example.com/moderndaymali"
+                      "link": "https://www.example.com/moderndaymali",
+                      "png": "Timbuktu.png"
                   }
               },
               {
@@ -443,7 +476,8 @@
                       "yearstart": -100,
                       "yearend": 800,
                       "title": "Axum",
-                      "link": "https://en.wikipedia.org/wiki/Aksum"
+                      "link": "https://en.wikipedia.org/wiki/Aksum",
+                      "png": "Axum.png"
                   }
               },
               {
@@ -456,7 +490,8 @@
                       "yearstart": 1400,
                       "yearend": 1800,
                       "title": "Ethiopia",
-                      "link": "https://en.wikipedia.org/wiki/Ethiopia"
+                      "link": "https://en.wikipedia.org/wiki/Ethiopia",
+                      "png": "Ethiopia.png"
                   }
               },
               {
@@ -469,7 +504,8 @@
                       "yearstart": 1200,
                       "yearend": 1600,
                       "title": "Great Zimbabwe",
-                      "link": "https://en.wikipedia.org/wiki/Great_Zimbabwe"
+                      "link": "https://en.wikipedia.org/wiki/Great_Zimbabwe",
+                      "png": "Zimbabwe.png"
                   }
               },
               {
@@ -482,7 +518,8 @@
                       "yearstart": 1700,
                       "yearend": 2100,
                       "title": "South Africa",
-                      "link": "https://en.wikipedia.org/wiki/South_Africa"
+                      "link": "https://en.wikipedia.org/wiki/South_Africa",
+                      "png": "Capetown.png"
                   }
               },
               {
@@ -495,7 +532,8 @@
                       "yearstart": -100,
                       "yearend": 300,
                       "title": "Parthian Empire",
-                      "link": "https://en.wikipedia.org/wiki/Parthian_Empire"
+                      "link": "https://en.wikipedia.org/wiki/Parthian_Empire",
+                      "png": "Sassanid.png"
                   }
               },
               {
@@ -508,7 +546,8 @@
                       "yearstart": 400,
                       "yearend": 600,
                       "title": "Sassanid Empire",
-                      "link": "https://en.wikipedia.org/wiki/Sasanian_Empire"
+                      "link": "https://en.wikipedia.org/wiki/Sasanian_Empire",
+                      "png": "Sassanid.png"
                   }
               },
               {
@@ -521,7 +560,8 @@
                       "yearstart": 700,
                       "yearend": 800,
                       "title": "Ummayad Caliphate",
-                      "link": "https://en.wikipedia.org/wiki/Umayyad_Caliphate"
+                      "link": "https://en.wikipedia.org/wiki/Umayyad_Caliphate",
+                      "png": "Umayyad.png"
                   }
               },
               {
@@ -534,7 +574,8 @@
                       "yearstart": 1400,
                       "yearend": 1800,
                       "title": "Ottoman Empire",
-                      "link": "https://en.wikipedia.org/wiki/Ottoman_Empire"
+                      "link": "https://en.wikipedia.org/wiki/Ottoman_Empire",
+                      "png": "Ottoman.png"
                   }
               },
               {
@@ -547,7 +588,8 @@
                       "yearstart": 400,
                       "yearend": 600,
                       "title": "Gupta Empire",
-                      "link": "https://en.wikipedia.org/wiki/Gupta_Empire"
+                      "link": "https://en.wikipedia.org/wiki/Gupta_Empire",
+                      "png": "Gupta.png"
                   }
               },
               {
@@ -560,7 +602,8 @@
                       "yearstart": 1200,
                       "yearend": 1300,
                       "title": "Delhi Sultanate",
-                      "link": "https://en.wikipedia.org/wiki/Delhi_Sultanate"
+                      "link": "https://en.wikipedia.org/wiki/Delhi_Sultanate",
+                      "png": "Delhi.png"
                   }
               },
               {
@@ -573,7 +616,8 @@
                       "yearstart": 1400,
                       "yearend": 1600,
                       "title": "Mughal India",
-                      "link": "https://en.wikipedia.org/wiki/Mughal_empire"
+                      "link": "https://en.wikipedia.org/wiki/Mughal_empire",
+                      "png": "Mughal.png"
                   }
               },
               {
@@ -586,7 +630,8 @@
                       "yearstart": 1900,
                       "yearend": 2100,
                       "title": "India",
-                      "link": "https://en.wikipedia.org/wiki/India"
+                      "link": "https://en.wikipedia.org/wiki/India",
+                      "png": "Mughal.png"
                   }
               },
               {
@@ -599,7 +644,8 @@
                       "yearstart": -100,
                       "yearend": 300,
                       "title": "Han Dynasty China",
-                      "link": "https://www.example.com/xian"
+                      "link": "https://www.example.com/xian",
+                      "png": "China.png"
                   }
               },
               {
@@ -612,7 +658,8 @@
                       "yearstart": 700,
                       "yearend": 800,
                       "title": "Tang Dynasty China",
-                      "link": "https://www.example.com/xian"
+                      "link": "https://www.example.com/xian",
+                      "png": "China.png"
                   }
               },
               {
@@ -625,7 +672,8 @@
                       "yearstart": 900,
                       "yearend": 1100,
                       "title": "Song Dynasty China",
-                      "link": "https://www.example.com/hangzhou"
+                      "link": "https://www.example.com/hangzhou",
+                      "png": "China.png"
                   }
               },
               {
@@ -638,7 +686,8 @@
                       "yearstart": 1200,
                       "yearend": 1300,
                       "title": "Yuan Dynasty China",
-                      "link": "https://www.example.com/beijing"
+                      "link": "https://www.example.com/beijing",
+                      "png": "Mongol.png"
                   }
               },
               {
@@ -651,7 +700,8 @@
                       "yearstart": 1400,
                       "yearend": 1600,
                       "title": "Ming Dynasty China",
-                      "link": "https://www.example.com/beijing"
+                      "link": "https://www.example.com/beijing",
+                      "png": "China.png"
                   }
               },
               {
@@ -664,7 +714,8 @@
                       "yearstart": 1700,
                       "yearend": 1800,
                       "title": "Qing Dynasty China",
-                      "link": "https://www.example.com/beijing"
+                      "link": "https://www.example.com/beijing",
+                      "png": "China.png"
                   }
               },
               {
@@ -677,7 +728,8 @@
                       "yearstart": 1900,
                       "yearend": 2100,
                       "title": "China",
-                      "link": "https://www.example.com/beijing"
+                      "link": "https://www.example.com/beijing",
+                      "png": "China.png"
                   }
               },
               {
@@ -690,7 +742,8 @@
                       "yearstart": 900,
                       "yearend": 1300,
                       "title": "Khmer Empire",
-                      "link": "https://en.wikipedia.org/wiki/Khmer_Empire"
+                      "link": "https://en.wikipedia.org/wiki/Khmer_Empire",
+                      "png": "Khmer.png"
                   }
               },
               {
@@ -703,7 +756,8 @@
                       "yearstart": 1900,
                       "yearend": 2100,
                       "title": "Angkor Wat",
-                      "link": "https://en.wikipedia.org/wiki/Khmer_Empire"
+                      "link": "https://en.wikipedia.org/wiki/Khmer_Empire",
+                      "png": "Khmer.png"
                   }
               },
               {
@@ -716,7 +770,8 @@
                       "yearstart": 1200,
                       "yearend": 1300,
                       "title": "Majapahit",
-                      "link": "https://en.wikipedia.org/wiki/Majapahit"
+                      "link": "https://en.wikipedia.org/wiki/Majapahit",
+                      "png": "Majapahit.png"
                   }
               },
               {
@@ -729,7 +784,8 @@
                       "yearstart": 700,
                       "yearend": 800,
                       "title": "Nara, Japan",
-                      "link": "https://www.example.com/nara"
+                      "link": "https://www.example.com/nara",
+                      "png": "Japan Temple.png"
                   }
               },
               {
@@ -742,7 +798,8 @@
                       "yearstart": 900,
                       "yearend": 1300,
                       "title": "Kyoto, Japan",
-                      "link": "https://www.example.com/kyoto"
+                      "link": "https://www.example.com/kyoto",
+                      "png": "Japan Tori.png"
                   }
               },
               {
@@ -755,7 +812,8 @@
                       "yearstart": 1400,
                       "yearend": 1600,
                       "title": "Shogun Japan",
-                      "link": "https://www.example.com/kyoto"
+                      "link": "https://www.example.com/kyoto",
+                      "png": "Japan Shogun.png"
                   }
               },
               {
@@ -768,7 +826,8 @@
                       "yearstart": 1700,
                       "yearend": 1800,
                       "title": "Edo, Japan",
-                      "link": "https://www.example.com/tokyo"
+                      "link": "https://www.example.com/tokyo",
+                      "png": "Japan Edo.png"
                   }
               },
               {
@@ -781,7 +840,8 @@
                       "yearstart": 1900,
                       "yearend": 2100,
                       "title": "Japan",
-                      "link": "https://www.example.com/tokyo"
+                      "link": "https://www.example.com/tokyo",
+                      "png": "Japan Edo.png"
                   }
               },
               {
@@ -794,7 +854,8 @@
                       "yearstart": 1700,
                       "yearend": 2100,
                       "title": "Australia",
-                      "link": "https://en.wikipedia.org/wiki/Bogan"
+                      "link": "https://en.wikipedia.org/wiki/Bogan",
+                      "png": "Aussie.png"
                   }
               }
             ]
