@@ -6,15 +6,23 @@ import { Button } from '@mui/material'
 import LocalGroceryStoreTwoToneIcon from '@mui/icons-material/LocalGroceryStoreTwoTone'
 import HomeTwoToneIcon from '@mui/icons-material/HomeTwoTone'
 import SettingsTwoToneIcon from '@mui/icons-material/SettingsTwoTone'
-import { FormGroup, FormControlLabel, Switch } from '@mui/material'
+import { FormControlLabel, Switch } from '@mui/material'
 
-  // right-menu element
-  const rightMenuStyle = { 
-    zIndex: 10000,
-    width: '250px',
-    background: 'radial-gradient(circle at 3% -80%,#ADD8E6 0,#e3eedb 100%,violet 0)'
-  }
+// right-menu element
+const rightMenuStyle = { 
+  zIndex: 10000,
+  width: '250px',
+  background: 'radial-gradient(circle at 3% -80%,#ADD8E6 0,#e3eedb 100%,violet 0)'
+}
 
+/**
+ * 
+ * @param {Boolean} showTutorial If the tutorial should be shown, this is true
+ * @param {Boolean} setShowTutorial Assignment function for showTutorial
+ * @param {Boolean} showLabels If the labels should be shown, this is true
+ * @param {Boolean} setShowLabels Assignment function for showLabels
+ * @returns 
+ */
 const SiteNavBar = ({showTutorial, setShowTutorial, showLabels, setShowLabels}) => {
   return(
     <div className="navbar">

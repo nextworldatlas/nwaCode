@@ -48,10 +48,11 @@ export default function App() {
       zoom: 2,
     })
 
+    // When the map loads, add the empire boundaries.
     map.current.on('load', async () => {
       //HISTORICAL GSON FOR SHAPES//
       //QWE0
-
+      // Empire boundary sources
       mapSources.forEach((v, i) => {
         map.current.addSource(v.name, {
           type: 'geojson',
@@ -59,10 +60,11 @@ export default function App() {
         })
       })
 
-      
+      // Empire boundary fills
       mapLayersFill.forEach((v, i)=> {
         map.current.addLayer(v, 'country-label')
       })
+      // Empire boundary outlines
       mapLayersLine.forEach((v, i)=> {
         map.current.addLayer(v, 'country-label')
       })
@@ -85,13 +87,16 @@ export default function App() {
         })
       }
 
+      // If any of the images are missing, attempt to reload them.
       map.current.on('styleimagemissing', ()=>{
         loadImages()
       })
+
       // Add a GeoJSON source with points
       // search QWE2
       map.current.addSource('points', pointGeoJSON)
 
+      // Icon/label points
       map.current.addLayer({
         'id': 'points',
         'type': 'symbol',
@@ -129,6 +134,7 @@ export default function App() {
       //create pop-up with variable GeoJSON files
       const layers = ['world_1-fill', 'world_250-fill', 'world_500-fill', 'world_750-fill', 'world_1000-fill', 'world_1250-fill', 'world_1500-fill', 'world_1750-fill', 'world_2000-fill']; // add more layers as needed
       
+      // Clicking within an empire boundary leads to the wikipedia/external link.
       map.current.on('click', layers, (e) => {
         var popupContent = document.createElement('div');
         popupContent.style.color = 'white';
@@ -160,6 +166,7 @@ export default function App() {
       setIsStyleLoaded(true)
     })
 
+    // Load the point images/icons
     loadImages()
 
     if (/iPhone/i.test(navigator.userAgent)) {
@@ -172,14 +179,17 @@ export default function App() {
   const startyear = 0
   const endyear = 2023
   
+  // This is a relic of the original source. The two variables should be combined.
   useEffect(()=>{
     setCurrentYear(defaultyear)
   }, [defaultyear])
 
-  //set up the filter//
+  //set up the filter for empire eras//
   function filterBy(numYear) {
+    // If the selected year falls within an empire's era, show that empire's boundaries.
     const year = parseInt(numYear)
     let filters = [];
+    // This should be rewritten for CE/BCE (AD/BC), and displays should format based on negative numbers.
     if (year < 0) {
         filters = ["all",
             [">=", ['get', 'yearstart'], year],
@@ -192,6 +202,7 @@ export default function App() {
         ];
     }
 
+    // Only show points/icons/boundaries/fills that fit the current era.
     map.current.setFilter('points', filters)
     mapLayersFill.forEach((v, i)=>{
       map.current.setFilter(v.id, filters)
@@ -201,6 +212,7 @@ export default function App() {
     })
   }
 
+  // When the map input/controls are changed, redefine the style/display/art properties.
   useEffect(()=>{
     if(map.current && isStyleLoaded){
       filterBy(defaultyear)
