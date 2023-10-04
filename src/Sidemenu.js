@@ -1,6 +1,9 @@
 import { FormGroup, FormControlLabel, Switch } from '@mui/material'
 import './sidemenu.css'
 
+/**
+ * This menu is a stub for later expansion.
+ */
 const Sidemenu = ({showTutorial, setShowTutorial, showLabels, setShowLabels}) => {
   return (
     <>
