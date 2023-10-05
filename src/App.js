@@ -62,11 +62,11 @@ export default function App() {
 
       // Empire boundary fills
       mapLayersFill.forEach((v, i)=> {
-        map.current.addLayer(v, 'country-label')
+        map.current.addLayer(v)
       })
       // Empire boundary outlines
       mapLayersLine.forEach((v, i)=> {
-        map.current.addLayer(v, 'country-label')
+        map.current.addLayer(v)
       })
 
       // Load multiple images to use as custom markers
