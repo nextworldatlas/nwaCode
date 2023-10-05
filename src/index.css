@@ -73,7 +73,7 @@ body {
   /* Set a specific slider handle width */
   height: 13px;
   /* Slider handle height */
-  background: blue;
+  background: navy;
   /* Green background */
   margin-top: -13.5px;
   border-radius: 50%;
@@ -109,7 +109,7 @@ body {
 #year {
   font-weight:'bold';
   text-align: center;
-  font-size: 20px;
+  font-size: 15px;
 }
 
 .navbar {

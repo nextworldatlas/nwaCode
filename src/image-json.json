@@ -152,8 +152,16 @@
     "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Khmer.png"
   },
   {
+    "imgname": "Srivijaya.png",
+    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Srivijaya.png"
+  },
+  {
     "imgname": "Majapahit.png",
     "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Majapahit.png"
+  },
+  {
+    "imgname": "VOC.png",
+    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/VOC.png"
   },
   {
     "imgname": "Mughal.png",
@@ -178,6 +186,22 @@
   {
     "imgname": "Aussie.png",
     "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Aussie.png"
+  },
+  {
+    "imgname": "Timur.png",
+    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Timur.png"
+  },
+  {
+    "imgname": "KievRus.png",
+    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/KievRus.png"
+  },
+  {
+    "imgname": "Russia.png",
+    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Russia.png"
+  },
+  {
+    "imgname": "Persia.png",
+    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Persia.png"
   },
   {
     "imgname": "error-marker.png",

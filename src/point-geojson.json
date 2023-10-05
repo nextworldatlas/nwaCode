@@ -411,6 +411,34 @@
                   }
               },
               {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [30.5238, 50.4501]
+                },
+                "properties": {
+                  "yearstart": 900,
+                  "yearend": 1100,
+                  "title": "Kievian Rus",
+                  "link": "https://en.wikipedia.org/wiki/Kievan_Rus%27",
+                  "png": "KievRus.png"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [37.6176, 55.7558]
+                },
+                "properties": {
+                  "yearstart": 1400,
+                  "yearend": 2100,
+                  "title": "Russia",
+                  "link": "https://en.wikipedia.org/wiki/Russia",
+                  "png": "Russia.png"
+                }
+              },
+              {
                   "type": "Feature",
                   "geometry": {
                       "type": "Point",
@@ -495,18 +523,18 @@
                   }
               },
               {
-                  "type": "Feature",
-                  "geometry": {
-                      "type": "Point",
-                      "coordinates": [30.9338, -20.2675]
-                  },
-                  "properties": {
-                      "yearstart": 1200,
-                      "yearend": 1600,
-                      "title": "Great Zimbabwe",
-                      "link": "https://en.wikipedia.org/wiki/Great_Zimbabwe",
-                      "png": "Zimbabwe.png"
-                  }
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [30.9338, -20.2675]
+                },
+                "properties": {
+                  "yearstart": 1100,
+                  "yearend": 1300,
+                  "title": "Great Zimbabwe",
+                  "link": "https://en.wikipedia.org/wiki/Zimbabwe",
+                  "png": "Zimbabwe.png"
+                }
               },
               {
                   "type": "Feature",
@@ -535,6 +563,20 @@
                       "link": "https://en.wikipedia.org/wiki/Parthian_Empire",
                       "png": "Sassanid.png"
                   }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [51.6821, 32.6546]
+                },
+                "properties": {
+                  "yearstart": 1400,
+                  "yearend": 2100,
+                  "title": "Persia",
+                  "link": "https://en.wikipedia.org/wiki/Persia",
+                  "png": "Persia.png"
+                }
               },
               {
                   "type": "Feature",
@@ -577,6 +619,34 @@
                       "link": "https://en.wikipedia.org/wiki/Ottoman_Empire",
                       "png": "Ottoman.png"
                   }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [48.0386, 46.3479]
+                },
+                "properties": {
+                  "yearstart": 1200,
+                  "yearend": 1300,
+                  "title": "Mongol Empire",
+                  "link": "https://en.wikipedia.org/wiki/Mongol_Empire",
+                  "png": "Mongol.png"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [66.9560, 39.6270]
+                },
+                "properties": {
+                  "yearstart": 1400,
+                  "yearend": 1600,
+                  "title": "Timurid Empire",
+                  "link": "https://en.wikipedia.org/wiki/Timurid_dynasty",
+                  "png": "Timur.png"
+                }
               },
               {
                   "type": "Feature",
@@ -687,7 +757,7 @@
                       "yearend": 1300,
                       "title": "Yuan Dynasty China",
                       "link": "https://www.example.com/beijing",
-                      "png": "Mongol.png"
+                      "png": "China.png"
                   }
               },
               {
@@ -761,6 +831,20 @@
                   }
               },
               {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [104.7458, -2.9761]
+                },
+                "properties": {
+                  "yearstart": 900,
+                  "yearend": 1100,
+                  "title": "Srivijaya",
+                  "link": "https://en.wikipedia.org/wiki/Srivijaya",
+                  "png": "Srivijaya.png"
+                }
+              },
+              {
                   "type": "Feature",
                   "geometry": {
                       "type": "Point",
@@ -773,6 +857,20 @@
                       "link": "https://en.wikipedia.org/wiki/Majapahit",
                       "png": "Majapahit.png"
                   }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
+                  "coordinates": [106.8450, -6.2088]
+                },
+                "properties": {
+                  "yearstart": 1700,
+                  "yearend": 1800,
+                  "title": "Dutch East Indies",
+                  "link": "https://en.wikipedia.org/wiki/Dutch_East_Indies",
+                  "png": "VOC.png"
+                }
               },
               {
                   "type": "Feature",
