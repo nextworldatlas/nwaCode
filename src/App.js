@@ -2,11 +2,11 @@ import React, { useRef, useEffect, useState } from 'react'
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
 import Tutorial from './Tutorial'
 import SiteNavBar from './SiteNavBar';
-import mapImages from './image-json.json'
-import pointGeoJSON from './point-geojson.json'
-import mapSources from './source-json.json'
+import mapImages from './2png-load.json'
+import pointGeoJSON from './1Markers.json'
+import mapSources from './source-geojson.json'
 import mapLayersLine from './layers-line.json'
-import mapLayersFill from './layers-fill.json'
+import mapLayersFill from './3layers-fill.json'
 import './tutorial.css'
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_KEY
