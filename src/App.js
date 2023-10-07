@@ -264,10 +264,7 @@ export default function App() {
         <>
         <Tutorial setShowTutorial={setShowTutorial} setTutorialID={setTutorialWindow}>
           <div className="video-box">
-            <video width="300" height="300" controls>
-              <source src="./1 Slide.gif" type="image/gif" />
-              Your browser does not support the video tag.
-            </video>
+              <img src="./1 Slide.gif" width="300" height="300" />
           </div>
           <div className="instruction-box">
             <h1>Slide Historical Timeline to change map</h1>
@@ -288,11 +285,8 @@ export default function App() {
         tutorialWindow === 1 &&
         <>
         <Tutorial setShowTutorial={setShowTutorial} setTutorialID={setTutorialWindow}>
-          <div className="video-box">
-            <video width="300" height="300" controls>
-              <source src="./2 Click hi.gif" type="image/gif" />
-              Your browser does not support the video tag.
-            </video>
+        <div className="video-box">
+              <img src="./2 Click hi.gif" width="300" height="300" />
           </div>
           <div className="instruction-box">
             <h1>Click on map markers to open short video</h1>
@@ -313,11 +307,8 @@ export default function App() {
         tutorialWindow === 2 &&
         <>
         <Tutorial setShowTutorial={setShowTutorial} setTutorialID={setTutorialWindow}>
-          <div className="video-box">
-            <video width="300" height="300" controls>
-              <source src="./3 Explore hi.gif" type="image/gif" />
-              Your browser does not support the video tag.
-            </video>
+        <div className="video-box">
+              <img src="./3 Explore hi.gif" width="300" height="300" />
           </div>
           <div className="instruction-box">
             <h1>Explore the map! Click on terrritories for names</h1>
