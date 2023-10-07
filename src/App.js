@@ -265,7 +265,7 @@ export default function App() {
         <Tutorial setShowTutorial={setShowTutorial} setTutorialID={setTutorialWindow}>
           <div className="video-box">
             <video width="300" height="300" controls>
-              <source src="./sample.mp4" type="video/mp4" />
+              <source src="./1 Slide.gif" type="image/gif" />
               Your browser does not support the video tag.
             </video>
           </div>
@@ -290,7 +290,7 @@ export default function App() {
         <Tutorial setShowTutorial={setShowTutorial} setTutorialID={setTutorialWindow}>
           <div className="video-box">
             <video width="300" height="300" controls>
-              <source src="./sample.mp4" type="video/mp4" />
+              <source src="./2 Click hi.gif" type="image/gif" />
               Your browser does not support the video tag.
             </video>
           </div>
@@ -315,7 +315,7 @@ export default function App() {
         <Tutorial setShowTutorial={setShowTutorial} setTutorialID={setTutorialWindow}>
           <div className="video-box">
             <video width="300" height="300" controls>
-              <source src="./sample.mp4" type="video/mp4" />
+              <source src="./3 Explore hi.gif" type="image/gif" />
               Your browser does not support the video tag.
             </video>
           </div>
