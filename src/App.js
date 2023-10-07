@@ -267,7 +267,7 @@ export default function App() {
               <img src="./1 Slide.gif" width="300" height="300" />
           </div>
           <div className="instruction-box">
-          <img src="./Box Test.png" width="400" height="300" />
+          <img src="./Box Test.png" width="325" height="250" />
           </div>
         </Tutorial>
         </>
