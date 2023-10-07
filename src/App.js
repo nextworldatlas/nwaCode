@@ -267,15 +267,7 @@ export default function App() {
               <img src="./1 Slide.gif" width="300" height="300" />
           </div>
           <div className="instruction-box">
-            <h1>Slide Historical Timeline to change map</h1>
-            <ul>
-              <li>
-                Borders shift to show historical civilizations
-              </li>
-              <li>
-                250 year increments from 0-2000
-              </li>
-            </ul>
+          <img src="./Box Test.png" width="400" height="300" />
           </div>
         </Tutorial>
         </>
