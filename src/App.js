@@ -267,7 +267,7 @@ export default function App() {
               <img src="./1 Slide.gif" width="300" height="300" />
           </div>
           <div className="instruction-box">
-          <img src="./Box Test.png" width="325" height="250" />
+          <img src="./Tutorial Text-1.png" width="250" height="125" />
           </div>
         </Tutorial>
         </>
@@ -281,15 +281,7 @@ export default function App() {
               <img src="./2 Click hi.gif" width="300" height="300" />
           </div>
           <div className="instruction-box">
-            <h1>Click on map markers to open short video</h1>
-            <ul>
-              <li>
-                Blue markers are videos about site / civilization
-              </li>
-              <li>
-                Grey icons are Wikipedia links, video coming soon
-              </li>
-            </ul>
+          <img src="./Tutorial Text-2.png" width="250" height="125" />
           </div>
         </Tutorial>
         </>
@@ -303,15 +295,7 @@ export default function App() {
               <img src="./3 Explore hi.gif" width="300" height="300" />
           </div>
           <div className="instruction-box">
-            <h1>Explore the map! Click on terrritories for names</h1>
-            <ul>
-              <li>
-                Each colored territory has a marker, may need to zoom in more
-              </li>
-              <li>
-                Grey areas are undefined territory, because tribes
-              </li>
-            </ul>
+          <img src="./Tutorial Text-3.png" width="250" height="125" />
           </div>
         </Tutorial>
         </>
