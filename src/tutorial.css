@@ -18,7 +18,7 @@
   color: rgba(220, 220, 220, 0.95);
   border: 1px solid rgba(240, 240, 240, 0.95);
   border-radius: 5px;
-  background-color: rgba(10, 10, 10, 0.9);
+  background-color: rgba(3, 45, 73, 0.9);
   cursor: pointer;
 }
 
@@ -35,14 +35,14 @@
   position: fixed;
   font: 14px 'Arial Unicode MS Bold', Arial, Helvetica, sans-serif;
   color: rgba(230, 230, 230, .95);
-  border: rgba(0, 122, 122, 0.2) 3px solid;
+  border: rgba(255,255,255, 0.9) 3px solid;
   border-radius: 10px;
-  background-color: rgba(99, 102, 106, 0.1);
+  background-color: rgba(99,102,106, 0.3);
   width: 95%;
   height: auto;
   top: 7%;
   left: 2.5%;
-  backdrop-filter: blur(1.5px);
+  backdrop-filter: blur(3.5px);
   -webkit-backdrop-filter: blur(1.5px);
 }
 .button-close {
@@ -54,7 +54,7 @@
   margin-top: 5px;
   border: 1px solid rgba(240, 240, 240, 0.95);
   border-radius: 5px;
-  background-color: rgba(10, 10, 10, 0.9);
+  background-color: rgba(3, 45, 73, 0.9);
   cursor: pointer;
 }
 
@@ -80,11 +80,12 @@
   min-width: 300px;
 }
 .instruction-box {
-  display: inline-block;
+  display: flex;
+  justify-content: center;
   border-radius: 10px;
   box-sizing: border-box;
   border: 2px solid black;
-  background-color: rgba(125, 155, 193, 0.8);
+  background-color: rgba(3,43,73, 0.6);
   padding: 20px;
   padding-top: 30px;
   height: 300px;
