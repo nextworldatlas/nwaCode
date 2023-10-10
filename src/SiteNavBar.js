@@ -24,7 +24,7 @@ const rightMenuStyle = {
  * @param {Boolean} setShowLabels Assignment function for showLabels
  * @returns 
  */
-const SiteNavBar = ({ showTutorial, setShowTutorial, showLabels, setShowLabels, styleRotateGlobe, setStyleRotateGlobe }) => {
+const SiteNavBar = ({ showTutorial, setShowTutorial, showLabels, setShowLabels, styleRotateGlobe, setStyleRotateGlobe, setSpinEnabled }) => {
   return (
     <div className="navbar">
       <Button size="small" color="primary" aria-label="link to home" style={{ padding: '1px' }} href="https://www.instagram.com/nextworldatlas" target="_blank">
@@ -54,7 +54,7 @@ const SiteNavBar = ({ showTutorial, setShowTutorial, showLabels, setShowLabels, 
             <FormControlLabel control={<Switch checked={showLabels} onChange={() => setShowLabels(prev => !prev)} />} label="Modern Country Labels" />
           </li>
           <li>
-            <FormControlLabel control={<Switch checked={styleRotateGlobe} onChange={() => setStyleRotateGlobe(prev => !prev)} />} label={"Rotating Globe"} />
+            <FormControlLabel control={<Switch checked={styleRotateGlobe} onChange={() => {setStyleRotateGlobe(prev => !prev); setSpinEnabled(prev=>!prev)}} />} label={"Rotating Globe"} />
           </li>
         </ul>
       </div>

@@ -1,5 +1,6 @@
 import React, { useRef, useEffect, useState } from 'react'
 import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+import useTimer from './hooks/useTimer'
 import Tutorial from './Tutorial'
 import SiteNavBar from './SiteNavBar';
 import mapImages from './2png-load.json'
@@ -7,20 +8,29 @@ import pointGeoJSON from './1Markers.json'
 import mapSources from './source-geojson.json'
 import mapLayersLine from './layers-line.json'
 import mapLayersFill from './3layers-fill.json'
+import { IconButton, Button } from '@mui/material'
+import PauseCircleFilledTwoToneIcon from '@mui/icons-material/PauseCircleFilledTwoTone'
+import PlayCircleFilledTwoToneIcon from '@mui/icons-material/PlayCircleFilledTwoTone'
 import './tutorial.css'
 
 mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_KEY
 
 export default function App() {
+  const timerInterval = 500
+  const {time, isRunningRef, startTimer, pauseTimer, resetTimer, continuousTime} = useTimer(timerInterval)
+  const prevTime = useRef(0)
+  const [userInteracting, setUserInteracting] = useState(false)
+  const [spinEnabled, setSpinEnabled] = useState(false)
   const [showLabels, setShowLabels] = useState(false)
   const [showTutorial, setShowTutorial] = useState(true)
-  const [styleRotateGlobe, setStyleRotateGlobe] = useState(true)
+  const [styleRotateGlobe, setStyleRotateGlobe] = useState(false)
   const [tutorialWindow, setTutorialWindow] = useState(0)
   const [defaultyear, setDefaultYear] = useState(1750)
   const [currentyear, setCurrentYear] = useState(1750)
   const mapContainer = useRef(null)
   const map = useRef(null)
   const [isStyleLoaded, setIsStyleLoaded] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
 
   // search QWE1
   // Load and add individual images to the map
@@ -41,6 +51,7 @@ export default function App() {
 
   useEffect(() => {
     if (map.current) return; // initialize map only once
+    startTimer()
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
       style: styleRotateGlobe?'mapbox://styles/mapbox/streets-v12':'mapbox://styles/mapbox/navigation-day-v1',
@@ -128,32 +139,71 @@ export default function App() {
 
       // Open link on marker click
       map.current.on('click', 'points', (e) => {
-          const { link } = e.features[0].properties;
-          window.open(link);
+          const { link } = e.features[0].properties
+          window.open(link)
       });
 
       //create pop-up with variable GeoJSON files
-      const layers = ['world_1-fill', 'world_250-fill', 'world_500-fill', 'world_750-fill', 'world_1000-fill', 'world_1250-fill', 'world_1500-fill', 'world_1750-fill', 'world_2000-fill']; // add more layers as needed
+      const layers = ['world_1-fill', 'world_250-fill', 'world_500-fill', 'world_750-fill', 'world_1000-fill', 'world_1250-fill', 'world_1500-fill', 'world_1750-fill', 'world_2000-fill'] // add more layers as needed
       
       // Clicking within an empire boundary leads to the wikipedia/external link.
       map.current.on('click', layers, (e) => {
-        var popupContent = document.createElement('div');
-        popupContent.style.color = 'white';
-        popupContent.style.backgroundColor = 'steelblue';
-        popupContent.style.boxShadow = '1px 1px 1px rgba(0, 0, 0, 0.1)';
-        popupContent.style.padding = '10px';
-        popupContent.innerHTML = `<strong>${e.features[0].properties.NAME}</strong>`;
+        var popupContent = document.createElement('div')
+        popupContent.style.color = 'white'
+        popupContent.style.backgroundColor = 'steelblue'
+        popupContent.style.boxShadow = '1px 1px 1px rgba(0, 0, 0, 0.1)'
+        popupContent.style.padding = '10px'
+        popupContent.innerHTML = `<strong>${e.features[0].properties.NAME}</strong>`
 
         var popup = new mapboxgl.Popup({ className: 'my-popup' })
             .setLngLat(e.lngLat)
             .setDOMContent(popupContent)
-            .addTo(map.current);
+            .addTo(map.current)
 
         // Close the popup after 3 seconds
         window.setTimeout(() => {
-            popup.remove();
-        }, 3000);
-      });
+            popup.remove()
+        }, 3000)
+      })
+
+      // Pause spinning on interaction
+      map.current.on('mousedown', () => {
+        setUserInteracting(true)
+        setSpinEnabled(false)
+        pauseTimer()
+      })
+      
+      // Restart spinning the globe when interaction is complete
+      map.current.on('mouseup', () => {
+        setUserInteracting(false)
+        setSpinEnabled(true)
+        startTimer()
+      })
+      
+      // These events account for cases where the mouse has moved
+      // off the map, so 'mouseup' will not be fired.
+      map.current.on('dragend', () => {
+        setUserInteracting(false)
+        setSpinEnabled(true)
+        startTimer()
+      })
+      map.current.on('pitchend', () => {
+        setUserInteracting(false)
+        setSpinEnabled(true)
+        startTimer()
+      })
+      map.current.on('rotateend', () => {
+        setUserInteracting(false)
+        setSpinEnabled(true)
+        startTimer()
+      })
+      
+      // When animation is complete, start spinning if there is no ongoing interaction
+      /*map.current.on('moveend', () => {
+        setUserInteracting(false)
+        setSpinEnabled(true)
+        startTimer()
+      })*/
 
       // When the cursor enters a feature in one of the layers, change the cursor style to 'pointer'.
       map.current.on('mouseenter', layers, () => {
@@ -170,15 +220,24 @@ export default function App() {
     // Load the point images/icons
     loadImages()
 
+    // Modify the user interface for iPhones
     if (/iPhone/i.test(navigator.userAgent)) {
       // This is an iPhone, so add a class to the slider element
       let slider = document.getElementById('slider')
       slider.classList.add('iphone-slider')
     }
+
+    // If the user is on a cellphone/tablet, start the display with a rotating globe.
+    if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)){
+      setStyleRotateGlobe(true)
+      setSpinEnabled(true)
+      setIsMobile(true)
+    }
   }, [map.current, currentyear])
 
   const startyear = 0
   const endyear = 2023
+  const stepYear = 250
   
   // This is a relic of the original source. The two variables should be combined.
   useEffect(()=>{
@@ -187,7 +246,6 @@ export default function App() {
 
   // Toggle effect between rotating globe and flat map:
   useEffect(()=>{
-    console.log(map.current)
     //map.current.style = styleRotateGlobe?'mapbox://styles/mapbox/streets-v12':'mapbox://styles/mapbox/navigation-day-v1'
     map.current.setProjection(styleRotateGlobe?'globe':'naturalEarth')
   }, [styleRotateGlobe])
@@ -242,12 +300,59 @@ export default function App() {
     } else {
       sliderElement.style.background = 'linear-gradient(to right, #82CFD0 '+ value *0.4+'%, #00008B ' + value + '%, #fff ' + value + '%, white 100%)'
     }
+  }, [map.current, defaultyear, showLabels, time])
 
-  }, [map.current, defaultyear, showLabels])
+  function spinMap() {
+    // Count of seconds for an entire spin of the globe
+    const spinDuration = isMobile?15:30
+    // Above zoom level 5, do not rotate.
+    const maxSpinZoom = 20
+    // Rotate at intermediate speeds between zoom levels 2 and 5.
+    const slowSpinZoom = 2
+    // Speed of rotation
+    let distancePerSecond = 0
+
+    const zoom = map.current.getZoom()
+    if (zoom < maxSpinZoom) {
+      distancePerSecond = 180 / spinDuration
+      if (zoom > slowSpinZoom) {
+        // Slow spinning at higher zooms
+        const zoomDif =
+        (maxSpinZoom - zoom) / (maxSpinZoom - slowSpinZoom)
+        distancePerSecond *= zoomDif
+      }
+      const center = map.current.getCenter()
+      center.lng -= distancePerSecond
+      // Animate the map over the timerInterval period.
+      map.current.easeTo({ center, duration: timerInterval, easing: (n) => n })
+    }
+  }
+
+  // When the time increments, check if the map should be spinning
+  // If the map should be spinning, animate the globe and increment
+  // the timeline every *incrementDuration* seconds.
+  useEffect(()=>{
+    const incrementDuration = 30
+    if(styleRotateGlobe && spinEnabled && !userInteracting){
+      spinMap()
+      if(continuousTime - prevTime.current >= incrementDuration * 1000){
+        prevTime.current = continuousTime
+        setDefaultYear((defaultyear + stepYear)%(2000 + stepYear))
+      }
+    }
+  }, [time])
+
+  // When the user changes the view style, center the map.
+  useEffect(()=>{
+    const center = map.current.getCenter()
+    center.lat = 0
+    center.lng = 0
+    map.current.easeTo({ center, duration: 0.1, easing: (n) => n })
+  }, [styleRotateGlobe])
 
   return (
     <>
-    <SiteNavBar showTutorial={showTutorial} setShowTutorial={setShowTutorial} showLabels={showLabels} setShowLabels={setShowLabels} styleRotateGlobe={styleRotateGlobe} setStyleRotateGlobe={setStyleRotateGlobe}/>
+    <SiteNavBar showTutorial={showTutorial} setShowTutorial={setShowTutorial} showLabels={showLabels} setShowLabels={setShowLabels} styleRotateGlobe={styleRotateGlobe} setStyleRotateGlobe={setStyleRotateGlobe} setSpinEnabled={setSpinEnabled}/>
     <div style={{display: 'inline'}}>
       <div ref={mapContainer} className="map-container" />
 
@@ -255,7 +360,7 @@ export default function App() {
         <div className="map-overlay-inner">
           <h2>Historical Timeline</h2>
             <div id="sliderholder">
-              <input id="slider" className="slider" value={defaultyear} type="range" step={250} list="tickmarks" max={endyear} min={startyear} onChange={e=>setDefaultYear(e.target.value)}></input>
+              <input id="slider" className="slider" value={defaultyear} type="range" step={stepYear} list="tickmarks" max={endyear} min={startyear} onChange={e=>setDefaultYear(e.target.value)}></input>
             </div>
             <div id="year">{defaultyear} CE</div>
           <datalist id="tickmarks">
@@ -264,6 +369,7 @@ export default function App() {
             <span>0CE</span>
             <span>2000CE</span>
           </div>
+          <div>{spinEnabled? 'Next era in: ' + (30-(continuousTime/1000)%30).toFixed(1) + ' seconds':''}</div>
         </div>
       </div>
       {
@@ -309,6 +415,32 @@ export default function App() {
         </>
       }
     </div>
+    {
+      /*Only display pause button if the view style is a rotating globe*/
+      styleRotateGlobe &&
+        <>
+          {
+            /*If on mobile, display a circular pause/play button*/ 
+            isMobile &&
+            <div style={{position: 'fixed', bottom: 200, right: '10vw'}}>
+              <IconButton size="large" className='button-pause' style={{border: '3px solid rgba(99,102,180, 0.7)', background: 'rgba(99,102,180, 0.3)'}} onClick={(e)=>{e.stopPropagation();spinEnabled?pauseTimer():startTimer();setSpinEnabled(prev=>!prev)}}>
+                {
+                  spinEnabled?
+                  <PauseCircleFilledTwoToneIcon fontSize="large" />:
+                  <PlayCircleFilledTwoToneIcon fontSize='large' />
+                }
+              </IconButton>
+            </div>
+          }
+          {
+            /*If on desktop, display a rectangular pause button*/
+            !isMobile &&
+            <div style={{position: 'fixed', bottom: 200, right: '10vw', width: '80vw'}}>
+              <Button variant='contained' color='primary' fullWidth onClick={(e)=>{e.stopPropagation();spinEnabled?pauseTimer():startTimer();setSpinEnabled(prev=>!prev);}}>{spinEnabled?'Pause':'Spin'}</Button>
+            </div>
+          }
+        </>
+    }
     </>
   )
 }
