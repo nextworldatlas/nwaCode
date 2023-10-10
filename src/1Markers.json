@@ -526,6 +526,20 @@
                 "type": "Feature",
                 "geometry": {
                   "type": "Point",
+                  "coordinates": [31.1490, 30.240]
+                },
+                "properties": {
+                  "yearstart": 1200,
+                  "yearend": 1600,
+                  "title": "Mamluk Sultanate",
+                  "link": "https://en.wikipedia.org/wiki/Mamluk_Sultanate",
+                  "png": "Mamluk.png"
+                }
+              },
+              {
+                "type": "Feature",
+                "geometry": {
+                  "type": "Point",
                   "coordinates": [30.9338, -20.2675]
                 },
                 "properties": {

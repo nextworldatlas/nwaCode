@@ -204,6 +204,10 @@
     "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Persia.png"
   },
   {
+    "imgname": "Mamluk.png",
+    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Mamluk.png"
+  },
+  {
     "imgname": "error-marker.png",
     "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/error-marker.png"
   }
