@@ -176,26 +176,34 @@ export default function App() {
       // Restart spinning the globe when interaction is complete
       map.current.on('mouseup', () => {
         setUserInteracting(false)
-        setSpinEnabled(true)
-        startTimer()
+        if(styleRotateGlobe){
+          setSpinEnabled(true)
+          startTimer()
+        }
       })
       
       // These events account for cases where the mouse has moved
       // off the map, so 'mouseup' will not be fired.
       map.current.on('dragend', () => {
         setUserInteracting(false)
-        setSpinEnabled(true)
-        startTimer()
+        if(styleRotateGlobe){
+          setSpinEnabled(true)
+          startTimer()
+        }
       })
       map.current.on('pitchend', () => {
         setUserInteracting(false)
-        setSpinEnabled(true)
-        startTimer()
+        if(styleRotateGlobe){
+          setSpinEnabled(true)
+          startTimer()
+        }
       })
       map.current.on('rotateend', () => {
         setUserInteracting(false)
-        setSpinEnabled(true)
-        startTimer()
+        if(styleRotateGlobe){
+          setSpinEnabled(true)
+          startTimer()
+        }
       })
       
       // When animation is complete, start spinning if there is no ongoing interaction
@@ -248,6 +256,7 @@ export default function App() {
   useEffect(()=>{
     //map.current.style = styleRotateGlobe?'mapbox://styles/mapbox/streets-v12':'mapbox://styles/mapbox/navigation-day-v1'
     map.current.setProjection(styleRotateGlobe?'globe':'naturalEarth')
+    startTimer()
   }, [styleRotateGlobe])
 
   //set up the filter for empire eras//
