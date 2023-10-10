@@ -30,7 +30,7 @@ const SiteNavBar = ({ showTutorial, setShowTutorial, showLabels, setShowLabels, 
       <Button size="small" color="primary" aria-label="link to home" style={{ padding: '1px' }} href="https://www.instagram.com/nextworldatlas" target="_blank">
         <div className="navbar-text">
           <HomeTwoToneIcon fontSize="small" />
-          <div>All Videos</div>
+          <div>Videos</div>
         </div>
       </Button>
       <Button size="small" color="primary" aria-label="link to shop" style={{ padding: '1px' }} href="https://www.etsy.com/shop/nextworldatlas" target="_blank">

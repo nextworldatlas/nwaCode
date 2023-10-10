@@ -25,8 +25,8 @@ export default function App() {
   const [showTutorial, setShowTutorial] = useState(true)
   const [styleRotateGlobe, setStyleRotateGlobe] = useState(false)
   const [tutorialWindow, setTutorialWindow] = useState(0)
-  const [defaultyear, setDefaultYear] = useState(1750)
-  const [currentyear, setCurrentYear] = useState(1750)
+  const [defaultyear, setDefaultYear] = useState(1250)
+  const [currentyear, setCurrentYear] = useState(1250)
   const mapContainer = useRef(null)
   const map = useRef(null)
   const [isStyleLoaded, setIsStyleLoaded] = useState(false)
@@ -56,7 +56,7 @@ export default function App() {
       container: mapContainer.current,
       style: styleRotateGlobe?'mapbox://styles/mapbox/navigation-day-v1':'mapbox://styles/mapbox/streets-v12',
       projection: styleRotateGlobe?'globe':'naturalEarth',
-      center: [0, 0],
+      center: [20, 35],
       zoom: 2,
     })
 
@@ -313,7 +313,7 @@ export default function App() {
 
   function spinMap() {
     // Count of seconds for an entire spin of the globe
-    const spinDuration = isMobile?15:30
+    const spinDuration = isMobile?20:20
     // Above zoom level 5, do not rotate.
     const maxSpinZoom = 20
     // Rotate at intermediate speeds between zoom levels 2 and 5.
@@ -341,7 +341,7 @@ export default function App() {
   // If the map should be spinning, animate the globe and increment
   // the timeline every *incrementDuration* seconds.
   useEffect(()=>{
-    const incrementDuration = 30
+    const incrementDuration = 20
     if(styleRotateGlobe && spinEnabled && !userInteracting){
       spinMap()
       if(continuousTime - prevTime.current >= incrementDuration * 1000){
@@ -354,8 +354,8 @@ export default function App() {
   // When the user changes the view style, center the map.
   useEffect(()=>{
     const center = map.current.getCenter()
-    center.lat = 0
-    center.lng = 0
+    center.lat = 20
+    center.lng = 30
     map.current.easeTo({ center, duration: 0.1, easing: (n) => n })
   }, [styleRotateGlobe])
 
@@ -378,7 +378,7 @@ export default function App() {
             <span>0CE</span>
             <span>2000CE</span>
           </div>
-          <div>{spinEnabled? 'Next era in: ' + (30-(continuousTime/1000)%30).toFixed(0) + ' seconds':''}</div>
+          <div>{spinEnabled? 'Next era in: ' + (20-(continuousTime/1000)%20).toFixed(0) + ' seconds':''}</div>
         </div>
       </div>
       {
@@ -445,7 +445,7 @@ export default function App() {
             /*If on desktop, display a rectangular pause button*/
             !isMobile &&
             <div style={{position: 'fixed', bottom: 50, right: '10vw', width: '80vw'}}>
-              <Button variant='contained' color='primary' fullWidth onClick={(e)=>{e.stopPropagation();spinEnabled?pauseTimer():startTimer();setSpinEnabled(prev=>!prev);}}>{spinEnabled?'Pause':'Spin'}</Button>
+              <Button variant='contained' color='primary' fullWidth onClick={(e)=>{e.stopPropagation();spinEnabled?pauseTimer():startTimer();setSpinEnabled(prev=>!prev);}}>{spinEnabled?'Pause':'Rotate'}</Button>
             </div>
           }
         </>
