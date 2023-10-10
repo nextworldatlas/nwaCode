@@ -54,7 +54,7 @@ export default function App() {
     startTimer()
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: styleRotateGlobe?'mapbox://styles/mapbox/streets-v12':'mapbox://styles/mapbox/navigation-day-v1',
+      style: styleRotateGlobe?'mapbox://styles/mapbox/navigation-day-v1':'mapbox://styles/mapbox/streets-v12',
       projection: styleRotateGlobe?'globe':'naturalEarth',
       center: [0, 0],
       zoom: 2,
@@ -369,7 +369,7 @@ export default function App() {
             <span>0CE</span>
             <span>2000CE</span>
           </div>
-          <div>{spinEnabled? 'Next era in: ' + (30-(continuousTime/1000)%30).toFixed(1) + ' seconds':''}</div>
+          <div>{spinEnabled? 'Next era in: ' + (30-(continuousTime/1000)%30).toFixed(0) + ' seconds':''}</div>
         </div>
       </div>
       {
@@ -422,7 +422,7 @@ export default function App() {
           {
             /*If on mobile, display a circular pause/play button*/ 
             isMobile &&
-            <div style={{position: 'fixed', bottom: 200, right: '10vw'}}>
+            <div style={{position: 'fixed', bottom: 0, right: '10vw'}}>
               <IconButton size="large" className='button-pause' style={{border: '3px solid rgba(99,102,180, 0.7)', background: 'rgba(99,102,180, 0.3)'}} onClick={(e)=>{e.stopPropagation();spinEnabled?pauseTimer():startTimer();setSpinEnabled(prev=>!prev)}}>
                 {
                   spinEnabled?
@@ -435,7 +435,7 @@ export default function App() {
           {
             /*If on desktop, display a rectangular pause button*/
             !isMobile &&
-            <div style={{position: 'fixed', bottom: 200, right: '10vw', width: '80vw'}}>
+            <div style={{position: 'fixed', bottom: 0, right: '10vw', width: '80vw'}}>
               <Button variant='contained' color='primary' fullWidth onClick={(e)=>{e.stopPropagation();spinEnabled?pauseTimer():startTimer();setSpinEnabled(prev=>!prev);}}>{spinEnabled?'Pause':'Spin'}</Button>
             </div>
           }
