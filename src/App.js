@@ -14,6 +14,7 @@ mapboxgl.accessToken = process.env.REACT_APP_MAPBOX_KEY
 export default function App() {
   const [showLabels, setShowLabels] = useState(false)
   const [showTutorial, setShowTutorial] = useState(true)
+  const [styleRotateGlobe, setStyleRotateGlobe] = useState(true)
   const [tutorialWindow, setTutorialWindow] = useState(0)
   const [defaultyear, setDefaultYear] = useState(1750)
   const [currentyear, setCurrentYear] = useState(1750)
@@ -42,8 +43,8 @@ export default function App() {
     if (map.current) return; // initialize map only once
     map.current = new mapboxgl.Map({
       container: mapContainer.current,
-      style: 'mapbox://styles/mapbox/navigation-day-v1',
-      projection: 'naturalEarth',
+      style: styleRotateGlobe?'mapbox://styles/mapbox/streets-v12':'mapbox://styles/mapbox/navigation-day-v1',
+      projection: styleRotateGlobe?'globe':'naturalEarth',
       center: [0, 0],
       zoom: 2,
     })
@@ -184,6 +185,13 @@ export default function App() {
     setCurrentYear(defaultyear)
   }, [defaultyear])
 
+  // Toggle effect between rotating globe and flat map:
+  useEffect(()=>{
+    console.log(map.current)
+    //map.current.style = styleRotateGlobe?'mapbox://styles/mapbox/streets-v12':'mapbox://styles/mapbox/navigation-day-v1'
+    map.current.setProjection(styleRotateGlobe?'globe':'naturalEarth')
+  }, [styleRotateGlobe])
+
   //set up the filter for empire eras//
   function filterBy(numYear) {
     // If the selected year falls within an empire's era, show that empire's boundaries.
@@ -239,7 +247,7 @@ export default function App() {
 
   return (
     <>
-    <SiteNavBar showTutorial={showTutorial} setShowTutorial={setShowTutorial} showLabels={showLabels} setShowLabels={setShowLabels} />
+    <SiteNavBar showTutorial={showTutorial} setShowTutorial={setShowTutorial} showLabels={showLabels} setShowLabels={setShowLabels} styleRotateGlobe={styleRotateGlobe} setStyleRotateGlobe={setStyleRotateGlobe}/>
     <div style={{display: 'inline'}}>
       <div ref={mapContainer} className="map-container" />
 
