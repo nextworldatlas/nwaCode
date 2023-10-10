@@ -340,7 +340,7 @@ export default function App() {
         setDefaultYear((defaultyear + stepYear)%(2000 + stepYear))
       }
     }
-  }, [time])
+  }, [continuousTime])
 
   // When the user changes the view style, center the map.
   useEffect(()=>{
