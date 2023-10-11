@@ -36,7 +36,7 @@ const SiteNavBar = ({ showTutorial, setShowTutorial, showLabels, setShowLabels, 
       <Button size="small" color="primary" aria-label="link to shop" style={{ padding: '1px' }} href="https://www.etsy.com/shop/nextworldatlas" target="_blank">
         <div className="navbar-text">
           <LocalGroceryStoreTwoToneIcon fontSize="small" />
-          <div>Shop</div>
+          <div>Maps</div>
         </div>
       </Button>
       <div className="add-node-vertical" >
@@ -47,14 +47,14 @@ const SiteNavBar = ({ showTutorial, setShowTutorial, showLabels, setShowLabels, 
           </div>
         </Button>
         <ul className="right-menu" style={rightMenuStyle}>
+        <li>
+            <FormControlLabel control={<Switch checked={styleRotateGlobe} onChange={() => {setStyleRotateGlobe(prev => !prev); setSpinEnabled(prev=>!prev)}} />} label={"Rotating Globe"} />
+          </li>
           <li>
             <FormControlLabel control={<Switch checked={showTutorial} onChange={() => setShowTutorial(prev => !prev)} />} label="Tutorial" />
           </li>
           <li>
             <FormControlLabel control={<Switch checked={showLabels} onChange={() => setShowLabels(prev => !prev)} />} label="Modern Country Labels" />
-          </li>
-          <li>
-            <FormControlLabel control={<Switch checked={styleRotateGlobe} onChange={() => {setStyleRotateGlobe(prev => !prev); setSpinEnabled(prev=>!prev)}} />} label={"Rotating Globe"} />
           </li>
         </ul>
       </div>

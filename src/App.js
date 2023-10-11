@@ -390,7 +390,7 @@ export default function App() {
               <img src="./1 Slide.gif" width="300" height="300" />
           </div>
           <div className="instruction-box">
-          <img src="./Tutorial Text-1.png" width="250" height="125" />
+          <img src="./Tutorial Text-A.png" width="275" height="150" />
           </div>
         </Tutorial>
         </>
@@ -401,10 +401,10 @@ export default function App() {
         <>
         <Tutorial setShowTutorial={setShowTutorial} setTutorialID={setTutorialWindow}>
         <div className="video-box">
-              <img src="./2 Click hi.gif" width="300" height="300" />
+              <img src="./B Rotation.gif" width="300" height="300" />
           </div>
           <div className="instruction-box">
-          <img src="./Tutorial Text-2.png" width="250" height="125" />
+          <img src="./Tutorial Text-B Mobile.png" width="280" height="130" />
           </div>
         </Tutorial>
         </>
@@ -432,11 +432,15 @@ export default function App() {
             /*If on mobile, display a circular pause/play button*/ 
             isMobile &&
             <div style={{position: 'fixed', bottom: 50, right: '10vw'}}>
-              <IconButton size="large" className='button-pause' style={{border: '3px solid rgba(99,102,180, 0.7)', background: 'rgba(99,102,180, 0.3)'}} onClick={(e)=>{e.stopPropagation();spinEnabled?pauseTimer():startTimer();setSpinEnabled(prev=>!prev)}}>
+              <IconButton size="large" className='button-pause' style={{border: '3px solid rgba(0,0,0, 0.7)', background: 'rgba(0,0,0, 0.5)'}} onClick={(e)=>{e.stopPropagation();spinEnabled?pauseTimer():startTimer();setSpinEnabled(prev=>!prev)}}>
                 {
                   spinEnabled?
-                  <PauseCircleFilledTwoToneIcon fontSize="large" />:
-                  <PlayCircleFilledTwoToneIcon fontSize='large' />
+                  <PauseCircleFilledTwoToneIcon fontSize="large" 
+                  style={{ color: 'white' }}
+                  />:
+                  <PlayCircleFilledTwoToneIcon fontSize='large' 
+                  style={{ color: 'white' }}
+                  />
                 }
               </IconButton>
             </div>
@@ -444,7 +448,7 @@ export default function App() {
           {
             /*If on desktop, display a rectangular pause button*/
             !isMobile &&
-            <div style={{position: 'fixed', bottom: 50, right: '10vw', width: '80vw'}}>
+            <div style={{position: 'fixed', bottom: 50, right: '39vw', width: '20vw'}}>
               <Button variant='contained' color='primary' fullWidth onClick={(e)=>{e.stopPropagation();spinEnabled?pauseTimer():startTimer();setSpinEnabled(prev=>!prev);}}>{spinEnabled?'Pause':'Rotate'}</Button>
             </div>
           }
