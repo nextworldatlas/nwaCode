@@ -1,8 +1,9 @@
 import React, { useRef, useEffect, useState } from 'react'
-import mapboxgl from '!mapbox-gl'; // eslint-disable-line import/no-webpack-loader-syntax
+import mapboxgl from '!mapbox-gl' // eslint-disable-line import/no-webpack-loader-syntax
 import useTimer from './hooks/useTimer'
 import Tutorial from './Tutorial'
-import SiteNavBar from './SiteNavBar';
+import SiteNavBar from './SiteNavBar'
+import SiteTitleBar from './SiteTitleBar'
 import mapImages from './2png-load.json'
 import pointGeoJSON from './1Markers.json'
 import mapSources from './source-geojson.json'
@@ -170,39 +171,50 @@ export default function App() {
       map.current.on('mousedown', () => {
         setUserInteracting(true)
         setSpinEnabled(false)
-        pauseTimer()
+        //pauseTimer()
       })
       
       // Restart spinning the globe when interaction is complete
       map.current.on('mouseup', () => {
         setUserInteracting(false)
         if(styleRotateGlobe){
-          setSpinEnabled(true)
-          startTimer()
+          //setSpinEnabled(true)
+          //startTimer()
         }
       })
       
       // These events account for cases where the mouse has moved
       // off the map, so 'mouseup' will not be fired.
       map.current.on('dragend', () => {
-        setUserInteracting(false)
+        setUserInteracting(true)
         if(styleRotateGlobe){
-          setSpinEnabled(true)
-          startTimer()
+          //setSpinEnabled(true)
+          //startTimer()
         }
       })
       map.current.on('pitchend', () => {
-        setUserInteracting(false)
+        setUserInteracting(true)
         if(styleRotateGlobe){
-          setSpinEnabled(true)
-          startTimer()
+          setSpinEnabled(false)
+          //setSpinEnabled(true)
+          //startTimer()
         }
       })
       map.current.on('rotateend', () => {
-        setUserInteracting(false)
+        setUserInteracting(true)
         if(styleRotateGlobe){
-          setSpinEnabled(true)
-          startTimer()
+          setSpinEnabled(false)
+          //setSpinEnabled(true)
+          //startTimer()
+        }
+      })
+      
+      map.current.on('zoom', () => {
+        setUserInteracting(true)
+        if(styleRotateGlobe){
+          setSpinEnabled(false)
+          //setSpinEnabled(true)
+          //startTimer()
         }
       })
       
@@ -361,6 +373,7 @@ export default function App() {
 
   return (
     <>
+    <SiteTitleBar />
     <SiteNavBar showTutorial={showTutorial} setShowTutorial={setShowTutorial} showLabels={showLabels} setShowLabels={setShowLabels} styleRotateGlobe={styleRotateGlobe} setStyleRotateGlobe={setStyleRotateGlobe} setSpinEnabled={setSpinEnabled}/>
     <div style={{display: 'inline'}}>
       <div ref={mapContainer} className="map-container" />

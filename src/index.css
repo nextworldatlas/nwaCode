@@ -116,7 +116,6 @@ body {
   /*background-color: black;*/
   box-shadow: 0px 2px 1px -1px rgb(0 0 0 / 20%), 0px 1px 1px 0px rgb(0 0 0 / 14%), 0px 1px 3px 0px rgb(0 0 0 / 12%);
   background-image: linear-gradient(rgba(255, 255, 255, 0.05), rgba(255, 255, 255, 0.05));
-  padding: 5px;
   text-align: right;
   font-family: 'Arial Unicode MS Bold',
     monospace;

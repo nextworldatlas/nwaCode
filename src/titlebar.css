@@ -1,0 +1,26 @@
+.titlebar{
+  background: radial-gradient(circle at 3% 25%,#ADD8E6 0,#e3eedb 100%,violet 0);
+  font: 'Arial Unicode MS Bold';
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 10px;
+  align-items: bottom;
+  justify-content: left;
+  padding: 2px;
+}
+
+.titlebar-content{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  padding-left: 10px;
+  padding-right: 40px;
+}
+
+.titlebar-text{
+  align-self: flex-end;
+  font-family: "Roboto","Helvetica","Arial",sans-serif;
+  font-size: 0.8125rem;
+  letter-spacing: 0.02857em;
+}

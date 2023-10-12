@@ -26,6 +26,6 @@
     "defaults",
     "not ie 11"
   ],
-  "author": "Mapbox",
+  "author": "Nick Wong, Issac Gardner",
   "license": "MIT"
 }
