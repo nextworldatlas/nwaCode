@@ -181,7 +181,7 @@ export default function App() {
       map.current.on('pitchend', pauseGlobe)
       map.current.on('rotateend', pauseGlobe)
       map.current.on('zoomstart', pauseGlobe)
-      map.current.on('zoomstart', pauseGlobe)
+      map.current.on('touchstart', pauseGlobe)
 
       // When the cursor enters a feature in one of the layers, change the cursor style to 'pointer'.
       map.current.on('mouseenter', layers, () => {
