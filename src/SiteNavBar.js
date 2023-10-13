@@ -48,7 +48,7 @@ const SiteNavBar = ({ showTutorial, setShowTutorial, showLabels, setShowLabels, 
         </Button>
         <ul className="right-menu" style={rightMenuStyle}>
         <li>
-            <FormControlLabel control={<Switch checked={styleRotateGlobe} onChange={() => {setStyleRotateGlobe(prev => !prev); setSpinEnabled(prev=>!prev)}} />} label={"Rotating Globe"} />
+            <FormControlLabel control={<Switch checked={styleRotateGlobe} onChange={() => {setSpinEnabled(!styleRotateGlobe); setStyleRotateGlobe(prev => !prev);}} />} label={"Rotating Globe"} />
           </li>
           <li>
             <FormControlLabel control={<Switch checked={showTutorial} onChange={() => setShowTutorial(prev => !prev)} />} label="Tutorial" />

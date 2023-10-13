@@ -20,11 +20,12 @@ export default function App() {
   const timerInterval = 500
   const {time, isRunningRef, startTimer, pauseTimer, resetTimer, continuousTime} = useTimer(timerInterval)
   const prevTime = useRef(0)
-  const [userInteracting, setUserInteracting] = useState(false)
   const [spinEnabled, setSpinEnabled] = useState(false)
   const [showLabels, setShowLabels] = useState(false)
   const [showTutorial, setShowTutorial] = useState(true)
   const [styleRotateGlobe, setStyleRotateGlobe] = useState(false)
+  const styleRotateGlobeRef = useRef()
+  styleRotateGlobeRef.current = styleRotateGlobe
   const [tutorialWindow, setTutorialWindow] = useState(0)
   const [defaultyear, setDefaultYear] = useState(1250)
   const [currentyear, setCurrentYear] = useState(1250)
@@ -48,6 +49,13 @@ export default function App() {
         }
       })
     })
+  }
+
+  // Pause the spinning globe, useful for user interaction.
+  const pauseGlobe = () => {
+    if(styleRotateGlobeRef){
+      setSpinEnabled(false)
+    }
   }
 
   useEffect(() => {
@@ -168,62 +176,12 @@ export default function App() {
       })
 
       // Pause spinning on interaction
-      map.current.on('mousedown', () => {
-        setUserInteracting(true)
-        setSpinEnabled(false)
-        //pauseTimer()
-      })
-      
-      // Restart spinning the globe when interaction is complete
-      map.current.on('mouseup', () => {
-        setUserInteracting(false)
-        if(styleRotateGlobe){
-          //setSpinEnabled(true)
-          //startTimer()
-        }
-      })
-      
-      // These events account for cases where the mouse has moved
-      // off the map, so 'mouseup' will not be fired.
-      map.current.on('dragend', () => {
-        setUserInteracting(true)
-        if(styleRotateGlobe){
-          //setSpinEnabled(true)
-          //startTimer()
-        }
-      })
-      map.current.on('pitchend', () => {
-        setUserInteracting(true)
-        if(styleRotateGlobe){
-          setSpinEnabled(false)
-          //setSpinEnabled(true)
-          //startTimer()
-        }
-      })
-      map.current.on('rotateend', () => {
-        setUserInteracting(true)
-        if(styleRotateGlobe){
-          setSpinEnabled(false)
-          //setSpinEnabled(true)
-          //startTimer()
-        }
-      })
-      
-      map.current.on('zoom', () => {
-        setUserInteracting(true)
-        if(styleRotateGlobe){
-          setSpinEnabled(false)
-          //setSpinEnabled(true)
-          //startTimer()
-        }
-      })
-      
-      // When animation is complete, start spinning if there is no ongoing interaction
-      /*map.current.on('moveend', () => {
-        setUserInteracting(false)
-        setSpinEnabled(true)
-        startTimer()
-      })*/
+      map.current.on('mousedown', pauseGlobe)
+      map.current.on('dragend', pauseGlobe)
+      map.current.on('pitchend', pauseGlobe)
+      map.current.on('rotateend', pauseGlobe)
+      map.current.on('zoomstart', pauseGlobe)
+      map.current.on('touchstart', pauseGlobe)
 
       // When the cursor enters a feature in one of the layers, change the cursor style to 'pointer'.
       map.current.on('mouseenter', layers, () => {
@@ -354,7 +312,7 @@ export default function App() {
   // the timeline every *incrementDuration* seconds.
   useEffect(()=>{
     const incrementDuration = 20
-    if(styleRotateGlobe && spinEnabled && !userInteracting){
+    if(styleRotateGlobe && spinEnabled ){
       spinMap()
       if(continuousTime - prevTime.current >= incrementDuration * 1000){
         prevTime.current = continuousTime
