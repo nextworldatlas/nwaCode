@@ -24,6 +24,8 @@ export default function App() {
   const [showLabels, setShowLabels] = useState(false)
   const [showTutorial, setShowTutorial] = useState(true)
   const [styleRotateGlobe, setStyleRotateGlobe] = useState(false)
+  const styleRotateGlobeRef = useRef()
+  styleRotateGlobeRef.current = styleRotateGlobe
   const [tutorialWindow, setTutorialWindow] = useState(0)
   const [defaultyear, setDefaultYear] = useState(1250)
   const [currentyear, setCurrentYear] = useState(1250)
@@ -179,7 +181,7 @@ export default function App() {
       map.current.on('pitchend', pauseGlobe)
       map.current.on('rotateend', pauseGlobe)
       map.current.on('zoomstart', pauseGlobe)
-      map.current.on('touchstart', pauseGlobe)
+      map.current.on('zoomstart', pauseGlobe)
 
       // When the cursor enters a feature in one of the layers, change the cursor style to 'pointer'.
       map.current.on('mouseenter', layers, () => {
