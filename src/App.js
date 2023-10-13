@@ -24,8 +24,6 @@ export default function App() {
   const [showLabels, setShowLabels] = useState(false)
   const [showTutorial, setShowTutorial] = useState(true)
   const [styleRotateGlobe, setStyleRotateGlobe] = useState(false)
-  const styleRotateGlobeRef = useRef()
-  styleRotateGlobeRef.current = styleRotateGlobe
   const [tutorialWindow, setTutorialWindow] = useState(0)
   const [defaultyear, setDefaultYear] = useState(1250)
   const [currentyear, setCurrentYear] = useState(1250)
