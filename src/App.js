@@ -21,7 +21,7 @@ export default function App() {
   const {time, isRunningRef, startTimer, pauseTimer, resetTimer, continuousTime} = useTimer(timerInterval)
   const prevTime = useRef(0)
   const [spinEnabled, setSpinEnabled] = useState(false)
-  const [showLabels, setShowLabels] = useState(false)
+  const [showLabels, setShowLabels] = useState(true)
   const [showTutorial, setShowTutorial] = useState(true)
   const [styleRotateGlobe, setStyleRotateGlobe] = useState(false)
   const styleRotateGlobeRef = useRef()
