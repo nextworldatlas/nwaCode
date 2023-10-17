@@ -34,5 +34,21 @@
   {
     "name": "world_2000",
     "dataurl": "https://raw.githubusercontent.com/nextworldatlas/data/main/world_2000.geojson"
+  },
+  {
+    "name": "world_250BC",
+    "dataurl": "https://raw.githubusercontent.com/nextworldatlas/data/main/world_bc300.geojson"
+  },
+  {
+    "name": "world_500BC",
+    "dataurl": "https://raw.githubusercontent.com/nextworldatlas/data/main/world_bc500.geojson"
+  },
+  {
+    "name": "world_750BC",
+    "dataurl": "https://raw.githubusercontent.com/nextworldatlas/data/main/world_bc700.geojson"
+  },
+  {
+    "name": "world_1000BC",
+    "dataurl": "https://raw.githubusercontent.com/nextworldatlas/data/main/world_bc1000.geojson"
   }
 ]

@@ -153,7 +153,7 @@ export default function App() {
       });
 
       //create pop-up with variable GeoJSON files
-      const layers = ['world_1-fill', 'world_250-fill', 'world_500-fill', 'world_750-fill', 'world_1000-fill', 'world_1250-fill', 'world_1500-fill', 'world_1750-fill', 'world_2000-fill'] // add more layers as needed
+      const layers = ['world_1-fill', 'world_250-fill', 'world_500-fill', 'world_750-fill', 'world_1000-fill', 'world_1250-fill', 'world_1500-fill', 'world_1750-fill', 'world_2000-fill', 'world_250BC-fill', 'world_500BC-fill', 'world_750BC-fill', 'world_1000BC-fill'] // add more layers as needed
       
       // Clicking within an empire boundary leads to the wikipedia/external link.
       map.current.on('click', layers, (e) => {
@@ -213,8 +213,8 @@ export default function App() {
     }
   }, [map.current, currentyear])
 
-  const startyear = 0
-  const endyear = 2023
+  const startyear = -1000
+  const endyear = 2000
   const stepYear = 250
   
   // This is a relic of the original source. The two variables should be combined.
@@ -346,7 +346,7 @@ export default function App() {
           <datalist id="tickmarks">
           </datalist>
           <div className="timeline-labels">
-            <span>0CE</span>
+            <span>-1000BC</span>
             <span>2000CE</span>
           </div>
           <div>{spinEnabled? 'Next era in: ' + (20-(continuousTime/1000)%20).toFixed(0) + ' seconds':''}</div>

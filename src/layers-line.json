@@ -71,5 +71,41 @@
       "line-color": "white",
       "line-width": 1
   }
+},
+{
+  "id": "world_250BC-line",
+  "type": "line",
+  "source": "world_250BC",
+  "paint": {
+      "line-color": "white",
+      "line-width": 1
+  }
+},
+{
+  "id": "world_500BC-line",
+  "type": "line",
+  "source": "world_500BC",
+  "paint": {
+      "line-color": "white",
+      "line-width": 1
+  }
+},
+{
+  "id": "world_750BC-line",
+  "type": "line",
+  "source": "world_750BC",
+  "paint": {
+      "line-color": "white",
+      "line-width": 1
+  }
+},
+{
+  "id": "world_1000BC-line",
+  "type": "line",
+  "source": "world_1000BC",
+  "paint": {
+      "line-color": "white",
+      "line-width": 1
+  }
 }
 ]

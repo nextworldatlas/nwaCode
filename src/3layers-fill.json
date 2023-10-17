@@ -216,5 +216,58 @@
         ],
         "fill-opacity": 0.7
     }
+  }, {
+    "id": "world_250BC-fill",
+    "type": "fill",
+    "source": "world_250BC",
+    "paint": {
+        "fill-color": [
+            "match",
+            ["get", "NAME"],
+            "Kingdom of Kassander", "blue",
+            "darkgrey"
+        ],
+        "fill-opacity": 0.7
+    }
+  }, {
+    "id": "world_500BC-fill",
+    "type": "fill",
+    "source": "world_500BC",
+    "paint": {
+        "fill-color": [
+            "match",
+            ["get", "NAME"],
+            "Greek city-states", "blue",
+            "darkgrey"
+        ],
+        "fill-opacity": 0.7
+    }
+  }, {
+    "id": "world_750BC-fill",
+    "type": "fill",
+    "source": "world_750BC",
+    "paint": {
+        "fill-color": [
+            "match",
+            ["get", "NAME"],
+            "Egypt", "brown",
+            "darkgrey"
+        ],
+        "fill-opacity": 0.7
+    }
+  }, {
+    "id": "world_1000BC-fill",
+    "type": "fill",
+    "source": "world_1000BC",
+    "paint": {
+        "fill-color": [
+            "match",
+            ["get", "NAME"],
+            "Egypt", "brown",
+            "darkgrey"
+        ],
+        "fill-opacity": 0.7
+    }
   }
+  
   ]
