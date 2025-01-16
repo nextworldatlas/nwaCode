@@ -213,9 +213,9 @@ export default function App() {
     }
   }, [map.current, currentyear])
 
-  const startyear = 0
+  const startyear = -3000
   const endyear = 2023
-  const stepYear = 250
+  const stepYear = 100
   
   // This is a relic of the original source. The two variables should be combined.
   useEffect(()=>{
@@ -346,7 +346,7 @@ export default function App() {
           <datalist id="tickmarks">
           </datalist>
           <div className="timeline-labels">
-            <span>0CE</span>
+            <span>3000BC</span>
             <span>2000CE</span>
           </div>
           <div>{spinEnabled? 'Next era in: ' + (20-(continuousTime/1000)%20).toFixed(0) + ' seconds':''}</div>
