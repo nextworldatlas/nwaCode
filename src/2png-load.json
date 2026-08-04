@@ -1,214 +1,214 @@
-[
+﻿[
   {
     "imgname": "Alhambra.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/Alhambra.png"
+    "imgurl": "/markers/Alhambra.png"
   },
   {
     "imgname": "Antarctica.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/Antarctica.png"
+    "imgurl": "/markers/Antarctica.png"
   },
   {
     "imgname": "Brazil.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/Brazil.png"
+    "imgurl": "/markers/Brazil.png"
   },
   {
     "imgname": "China.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/China.png"
+    "imgurl": "/markers/China.png"
   },
   {
     "imgname": "Mongol.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/Mongol.png"
+    "imgurl": "/markers/Mongol.png"
   },
   {
     "imgname": "Rome.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/Rome.png"
+    "imgurl": "/markers/Rome.png"
   },
   {
     "imgname": "Italy Venice.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/Italy%20Venice.png"
+    "imgurl": "/markers/Italy%20Venice.png"
   },
   {
     "imgname": "Italy Pisa.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/Italy%20Pisa.png"
+    "imgurl": "/markers/Italy%20Pisa.png"
   },
   {
     "imgname": "Italy Florence.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/Italy%20Florence.png"
+    "imgurl": "/markers/Italy%20Florence.png"
   },
   {
     "imgname": "Italy Vatican.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/Italy%20Vatican.png"
+    "imgurl": "/markers/Italy%20Vatican.png"
   },
   {
     "imgname": "Japan Temple.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/Japan%20Temple.png"
+    "imgurl": "/markers/Japan%20Temple.png"
   },
   {
     "imgname": "Japan Tori.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/Japan%20Tori.png"
+    "imgurl": "/markers/Japan%20Tori.png"
   },
   {
     "imgname": "Japan Shogun.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/Japan%20Shongun.png"
+    "imgurl": "/markers/Japan%20Shongun.png"
   },
   {
     "imgname": "Japan Edo.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/Japan%20Edo.png"
+    "imgurl": "/markers/Japan%20Edo.png"
   },
   {
     "imgname": "London Rome.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/London%20Rome.png"
+    "imgurl": "/markers/London%20Rome.png"
   },
   {
     "imgname": "London Tower.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/London%20Tower.png"
+    "imgurl": "/markers/London%20Tower.png"
   },
   {
     "imgname": "London Victorian.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/London%20Victorian.png"
+    "imgurl": "/markers/London%20Victorian.png"
   },
   {
     "imgname": "London Westminster.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/London%20Westminster.png"
+    "imgurl": "/markers/London%20Westminster.png"
   },
   {
     "imgname":"Teotihuacan.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/Teotihuacan.png"
+    "imgurl": "/markers/Teotihuacan.png"
   },
   {
     "imgname": "Mayans.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/Mayans.png"
+    "imgurl": "/markers/Mayans.png"
   },
   {
     "imgname": "Aztec.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/Aztec.png"
+    "imgurl": "/markers/Aztec.png"
   },
   {
     "imgname": "Spanish America.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/Spanish%20America.png"
+    "imgurl": "/markers/Spanish%20America.png"
   },
   {
     "imgname": "Mexico.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/Mexico.png"
+    "imgurl": "/markers/Mexico.png"
   },
   {
     "imgname": "Notre Dame.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/Notre%20Dame.png"
+    "imgurl": "/markers/Notre%20Dame.png"
   },
   {
     "imgname": "Puerto Rico.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/Puerto%20Rico.png"
+    "imgurl": "/markers/Puerto%20Rico.png"
   },
   {
     "imgname": "Timbuktu.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/Timbuktu.png"
+    "imgurl": "/markers/Timbuktu.png"
   },
   {
     "imgname": "USA.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/USA.png"
+    "imgurl": "/markers/USA.png"
   },
   {
     "imgname": "Abassid.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Abassid.png"
+    "imgurl": "/markersgrey/Abassid.png"
   },
   {
     "imgname": "Aussie.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Aussie.png"
+    "imgurl": "/markersgrey/Aussie.png"
   },
   {
     "imgname": "Axum.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Axum.png"
+    "imgurl": "/markersgrey/Axum.png"
   },
   {
     "imgname": "Byzantine.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Byzantine.png"
+    "imgurl": "/markersgrey/Byzantine.png"
   },
   {
     "imgname": "Capetown.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Capetown.png"
+    "imgurl": "/markersgrey/Capetown.png"
   },
   {
     "imgname": "Delhi.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Delhi.png"
+    "imgurl": "/markersgrey/Delhi.png"
   },
   {
     "imgname": "Ethiopia.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Ethiopia.png"
+    "imgurl": "/markersgrey/Ethiopia.png"
   },
   {
     "imgname": "Gupta.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Gupta.png"
+    "imgurl": "/markersgrey/Gupta.png"
   },
   {
     "imgname": "HolyRomanEmpire.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/HolyRomanEmpire.png"
+    "imgurl": "/markersgrey/HolyRomanEmpire.png"
   },
   {
     "imgname": "Hopewell.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Hopewell.png"
+    "imgurl": "/markersgrey/Hopewell.png"
   },
   {
     "imgname": "Khmer.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Khmer.png"
+    "imgurl": "/markersgrey/Khmer.png"
   },
   {
     "imgname": "Srivijaya.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Srivijaya.png"
+    "imgurl": "/markersgrey/Srivijaya.png"
   },
   {
     "imgname": "Majapahit.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Majapahit.png"
+    "imgurl": "/markersgrey/Majapahit.png"
   },
   {
     "imgname": "VOC.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/VOC.png"
+    "imgurl": "/markersgrey/VOC.png"
   },
   {
     "imgname": "Mughal.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Mughal.png"
+    "imgurl": "/markersgrey/Mughal.png"
   },
   {
     "imgname": "Ottoman.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Ottoman.png"
+    "imgurl": "/markersgrey/Ottoman.png"
   },
   {
     "imgname": "Sassanid.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Sassanid.png"
+    "imgurl": "/markersgrey/Sassanid.png"
   },
   {
     "imgname": "Umayyad.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Umayyad.png"
+    "imgurl": "/markersgrey/Umayyad.png"
   },
   {
     "imgname": "Zimbabwe.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Zimbabwe.png"
+    "imgurl": "/markersgrey/Zimbabwe.png"
   },
   {
     "imgname": "Aussie.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Aussie.png"
+    "imgurl": "/markersgrey/Aussie.png"
   },
   {
     "imgname": "Timur.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Timur.png"
+    "imgurl": "/markersgrey/Timur.png"
   },
   {
     "imgname": "KievRus.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/KievRus.png"
+    "imgurl": "/markersgrey/KievRus.png"
   },
   {
     "imgname": "Russia.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Russia.png"
+    "imgurl": "/markersgrey/Russia.png"
   },
   {
     "imgname": "Persia.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Persia.png"
+    "imgurl": "/markersgrey/Persia.png"
   },
   {
     "imgname": "Mamluk.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markersgrey/main/Mamluk.png"
+    "imgurl": "/markersgrey/Mamluk.png"
   },
   {
     "imgname": "error-marker.png",
-    "imgurl": "https://raw.githubusercontent.com/nextworldatlas/markers/main/error-marker.png"
+    "imgurl": "/markers/error-marker.png"
   }
 ]

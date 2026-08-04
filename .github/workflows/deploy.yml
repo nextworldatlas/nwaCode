@@ -1,0 +1,63 @@
+name: Build and deploy to nextworldatlas.com
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+# Never let two deploys write to public_html at the same time.
+concurrency:
+  group: deploy-production
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      # A build without the token compiles fine and deploys a blank map,
+      # so fail here instead of shipping it.
+      - name: Check Mapbox token is present
+        env:
+          REACT_APP_MAPBOX_KEY: ${{ secrets.REACT_APP_MAPBOX_KEY }}
+        run: |
+          if [ -z "$REACT_APP_MAPBOX_KEY" ]; then
+            echo "::error::REACT_APP_MAPBOX_KEY secret is empty. Set it in Settings > Secrets and variables > Actions."
+            exit 1
+          fi
+
+      - run: npm ci
+
+      - name: Build
+        env:
+          REACT_APP_MAPBOX_KEY: ${{ secrets.REACT_APP_MAPBOX_KEY }}
+          CI: false # eslint warnings are not build failures
+        run: npm run build
+
+      # Guard against the bundle silently losing its assets or its token.
+      - name: Verify build output
+        run: |
+          bundle=$(ls build/static/js/main.*.js)
+          grep -q 'pk\.ey' "$bundle" || { echo "::error::No Mapbox token in bundle"; exit 1; }
+          ! grep -q 'raw\.githubusercontent' "$bundle" || { echo "::error::Bundle still references raw.githubusercontent"; exit 1; }
+          test -f build/data/world_1.geojson
+          test -f build/markers/Rome.png
+          test -f build/markersgrey/Ottoman.png
+          echo "build OK: $(du -sh build | cut -f1)"
+
+      - name: Deploy to Hostinger
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: ./build/
+          server-dir: public_html/
+          # Diff-based: the 65 MB of GeoJSON uploads on the first run only.
+          state-name: .ftp-deploy-sync-state.json

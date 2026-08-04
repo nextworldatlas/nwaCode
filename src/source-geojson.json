@@ -1,38 +1,38 @@
-[
+﻿[
   {
     "name": "world_1",
-    "dataurl": "https://raw.githubusercontent.com/nextworldatlas/data/main/world_1.geojson"
+    "dataurl": "/data/world_1.geojson"
   },
   {
     "name": "world_250",
-    "dataurl": "https://raw.githubusercontent.com/nextworldatlas/data/main/world_200.geojson"
+    "dataurl": "/data/world_200.geojson"
   },
   {
     "name": "world_500",
-    "dataurl": "https://raw.githubusercontent.com/nextworldatlas/data/main/world_500.geojson"
+    "dataurl": "/data/world_500.geojson"
   },
   {
     "name": "world_750",
-    "dataurl": "https://raw.githubusercontent.com/nextworldatlas/data/main/world_700.geojson"
+    "dataurl": "/data/world_700.geojson"
   },
   {
     "name": "world_1000",
-    "dataurl": "https://raw.githubusercontent.com/nextworldatlas/data/main/world_1000.geojson"
+    "dataurl": "/data/world_1000.geojson"
   },
   {
     "name": "world_1250",
-    "dataurl": "https://raw.githubusercontent.com/nextworldatlas/data/main/world_1279.geojson"
+    "dataurl": "/data/world_1279.geojson"
   },
   {
     "name": "world_1500",
-    "dataurl": "https://raw.githubusercontent.com/nextworldatlas/data/main/world_1500.geojson"
+    "dataurl": "/data/world_1500.geojson"
   },
   {
     "name": "world_1750",
-    "dataurl": "https://raw.githubusercontent.com/nextworldatlas/data/main/world_1783.geojson" 
+    "dataurl": "/data/world_1783.geojson" 
   },
   {
     "name": "world_2000",
-    "dataurl": "https://raw.githubusercontent.com/nextworldatlas/data/main/world_2000.geojson"
+    "dataurl": "/data/world_2000.geojson"
   }
 ]
