@@ -31,20 +31,30 @@ npm start
 
 ## Deployment
 
-Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds and FTPs `build/`
-into `public_html` on Hostinger (nextworldatlas.com). No manual upload.
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds and rsyncs `build/`
+over SSH into `public_html` on Hostinger (nextworldatlas.com). No manual upload.
+
+Host details are non-secret and live in the workflow's `env:` block —
+`62.72.50.247`, port `65002`, user `u857656583`.
 
 Required repo secrets — Settings → Secrets and variables → Actions:
 
 | Secret | Value |
 |---|---|
 | `REACT_APP_MAPBOX_KEY` | Mapbox public token (`pk.…`). Baked into the bundle at build time. |
-| `FTP_SERVER` | Hostinger FTP hostname from hPanel → Files → FTP Accounts |
-| `FTP_USERNAME` | FTP account username |
-| `FTP_PASSWORD` | FTP account password |
+| `SSH_PRIVATE_KEY` | Private half of the deploy keypair. Public half goes in hPanel → Advanced → SSH Access → SSH keys. |
 
-The first deploy uploads everything (~98 MB); after that the action diffs against
-`.ftp-deploy-sync-state.json` in `public_html` and uploads only what changed.
+### public_html is shared — do not add a blanket `--delete`
+
+Four other live sites sit inside `public_html` as subdirectories: `airportrouteatlas/`,
+`bookings/`, `guesspolis/`, and `test/`. A top-level `rsync --delete` (or an FTP action's
+default sync-with-delete) would erase all four.
+
+The workflow therefore syncs root-level files **without** `--delete`, and scopes `--delete`
+to the four directories this app owns: `static/`, `data/`, `markers/`, `markersgrey/`.
+A post-deploy step asserts the sibling directories still exist and fails the run if not.
+If another site is ever added under `public_html`, it is safe by default — but never
+"simplify" this into one recursive delete.
 
 ## Notes
 

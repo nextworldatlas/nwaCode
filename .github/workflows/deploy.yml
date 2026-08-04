@@ -10,6 +10,12 @@ concurrency:
   group: deploy-production
   cancel-in-progress: false
 
+env:
+  SSH_HOST: 62.72.50.247
+  SSH_PORT: 65002
+  SSH_USER: u857656583
+  REMOTE_ROOT: public_html
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -51,13 +57,41 @@ jobs:
           test -f build/markersgrey/Ottoman.png
           echo "build OK: $(du -sh build | cut -f1)"
 
-      - name: Deploy to Hostinger
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./build/
-          server-dir: public_html/
-          # Diff-based: the 65 MB of GeoJSON uploads on the first run only.
-          state-name: .ftp-deploy-sync-state.json
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+      # public_html is shared: airportrouteatlas/, bookings/, guesspolis/ and
+      # test/ are OTHER live sites that live inside it. A blanket --delete here
+      # would destroy them. So root-level files sync WITHOUT --delete, and
+      # --delete is scoped to the four directories this app actually owns.
+      - name: Deploy root files (no delete)
+        run: |
+          rsync -rlvz --no-perms --no-times \
+            -e "ssh -i ~/.ssh/deploy_key -p $SSH_PORT -o StrictHostKeyChecking=yes" \
+            --exclude 'static/' --exclude 'data/' --exclude 'markers/' --exclude 'markersgrey/' \
+            build/ "$SSH_USER@$SSH_HOST:$REMOTE_ROOT/"
+
+      - name: Deploy owned directories (delete stale files)
+        run: |
+          for dir in static data markers markersgrey; do
+            echo "--- syncing $dir ---"
+            rsync -rlvz --delete --no-perms --no-times \
+              -e "ssh -i ~/.ssh/deploy_key -p $SSH_PORT -o StrictHostKeyChecking=yes" \
+              "build/$dir/" "$SSH_USER@$SSH_HOST:$REMOTE_ROOT/$dir/"
+          done
+
+      - name: Confirm sibling sites are intact
+        run: |
+          ssh -i ~/.ssh/deploy_key -p "$SSH_PORT" -o StrictHostKeyChecking=yes \
+            "$SSH_USER@$SSH_HOST" \
+            'for d in airportrouteatlas bookings guesspolis test; do
+               if [ -d "$HOME/'"$REMOTE_ROOT"'/$d" ]; then echo "ok: $d"; else echo "MISSING: $d"; exit 1; fi
+             done'
+
+      - name: Clean up key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
