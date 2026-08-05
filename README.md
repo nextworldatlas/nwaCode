@@ -46,9 +46,13 @@ Required repo secrets — Settings → Secrets and variables → Actions:
 
 ### public_html is shared — do not add a blanket `--delete`
 
-Four other live sites sit inside `public_html` as subdirectories: `airportrouteatlas/`,
-`bookings/`, `guesspolis/`, and `test/`. A top-level `rsync --delete` (or an FTP action's
-default sync-with-delete) would erase all four.
+Three other sites sit inside `public_html` as subdirectories: `airportrouteatlas/`,
+`bookings/`, and `guesspolis/`. A top-level `rsync --delete` (or an FTP action's
+default sync-with-delete) would erase all three.
+
+(A fourth, `test/`, was a stale copy of this app and the last consumer of the
+`raw.githubusercontent` URLs. It was moved to `~/test.retired-2026-08-04` on
+2026-08-04, outside the web root.)
 
 The workflow therefore syncs root-level files **without** `--delete`, and scopes `--delete`
 to the four directories this app owns: `static/`, `data/`, `markers/`, `markersgrey/`.

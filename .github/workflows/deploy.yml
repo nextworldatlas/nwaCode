@@ -64,10 +64,10 @@ jobs:
           chmod 600 ~/.ssh/deploy_key
           ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
 
-      # public_html is shared: airportrouteatlas/, bookings/, guesspolis/ and
-      # test/ are OTHER live sites that live inside it. A blanket --delete here
-      # would destroy them. So root-level files sync WITHOUT --delete, and
-      # --delete is scoped to the four directories this app actually owns.
+      # public_html is shared: airportrouteatlas/, bookings/ and guesspolis/
+      # are OTHER sites that live inside it. A blanket --delete here would
+      # destroy them. So root-level files sync WITHOUT --delete, and --delete
+      # is scoped to the four directories this app actually owns.
       - name: Deploy root files (no delete)
         run: |
           rsync -rlvz --no-perms --no-times \
@@ -88,7 +88,7 @@ jobs:
         run: |
           ssh -i ~/.ssh/deploy_key -p "$SSH_PORT" -o StrictHostKeyChecking=yes \
             "$SSH_USER@$SSH_HOST" \
-            'for d in airportrouteatlas bookings guesspolis test; do
+            'for d in airportrouteatlas bookings guesspolis; do
                if [ -d "$HOME/'"$REMOTE_ROOT"'/$d" ]; then echo "ok: $d"; else echo "MISSING: $d"; exit 1; fi
              done'
 
