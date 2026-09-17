@@ -31,8 +31,20 @@ npm start
 
 ## Deployment
 
-Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds and rsyncs `build/`
-over SSH into `public_html` on Hostinger (nextworldatlas.com). No manual upload.
+Pushing to `main` triggers `.github/workflows/deploy.yml`, which builds once and rsyncs
+`build/` over SSH to two docroots on Hostinger. No manual upload.
+
+| URL | Docroot | Delete semantics |
+|---|---|---|
+| nextworldatlas.com | `~/public_html` | scoped — see below |
+| history.nextworldatlas.com | `~/domains/history.nextworldatlas.com/public_html` | full `--delete` (docroot is ours alone) |
+
+history is a straight mirror of production, not a staging environment. The run ends by
+fetching both URLs and asserting they serve the same bundle hash.
+
+Do **not** re-enable Hostinger's own Git integration (hPanel → Advanced → GIT) on either
+site. It clones the repo source into the docroot without running a build, which leaves no
+`index.html` and returns 403 — and it would fight this workflow on every push.
 
 Host details are non-secret and live in the workflow's `env:` block —
 `62.72.50.247`, port `65002`, user `u857656583`.

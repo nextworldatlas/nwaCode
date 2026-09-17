@@ -15,6 +15,7 @@ env:
   SSH_PORT: 65002
   SSH_USER: u857656583
   REMOTE_ROOT: public_html
+  MIRROR_ROOT: domains/history.nextworldatlas.com/public_html
 
 jobs:
   deploy:
@@ -91,6 +92,31 @@ jobs:
             'for d in airportrouteatlas bookings guesspolis; do
                if [ -d "$HOME/'"$REMOTE_ROOT"'/$d" ]; then echo "ok: $d"; else echo "MISSING: $d"; exit 1; fi
              done'
+
+      # history.nextworldatlas.com is a mirror of production. Unlike the main
+      # public_html, this docroot belongs to this app alone -- no sibling sites
+      # live inside it -- so a single --delete sync is safe here.
+      - name: Deploy mirror to history.nextworldatlas.com
+        run: |
+          ssh -i ~/.ssh/deploy_key -p "$SSH_PORT" -o StrictHostKeyChecking=yes \
+            "$SSH_USER@$SSH_HOST" "mkdir -p $MIRROR_ROOT"
+          rsync -rlvz --delete --no-perms --no-times \
+            -e "ssh -i ~/.ssh/deploy_key -p $SSH_PORT -o StrictHostKeyChecking=yes" \
+            build/ "$SSH_USER@$SSH_HOST:$MIRROR_ROOT/"
+
+      - name: Verify both sites serve the same build
+        run: |
+          bundle=$(basename $(ls build/static/js/main.*.js))
+          for host in nextworldatlas.com history.nextworldatlas.com; do
+            html=$(curl -sS --retry 3 --retry-delay 5 "https://$host/?ci=$GITHUB_RUN_ID")
+            if echo "$html" | grep -q "$bundle"; then
+              echo "ok: $host serving $bundle"
+            else
+              echo "::error::$host is not serving $bundle"
+              echo "$html" | head -20
+              exit 1
+            fi
+          done
 
       - name: Clean up key
         if: always()
