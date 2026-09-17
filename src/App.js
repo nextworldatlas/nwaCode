@@ -198,13 +198,6 @@ export default function App() {
     // Load the point images/icons
     loadImages()
 
-    // Modify the user interface for iPhones
-    if (/iPhone/i.test(navigator.userAgent)) {
-      // This is an iPhone, so add a class to the slider element
-      let slider = document.getElementById('slider')
-      slider.classList.add('iphone-slider')
-    }
-
     // If the user is on a cellphone/tablet, start the display with a rotating globe.
     if (/iPhone|iPad|iPod|Android/i.test(navigator.userAgent)){
       setStyleRotateGlobe(true)

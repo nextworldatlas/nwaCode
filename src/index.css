@@ -75,13 +75,9 @@ body {
   /* Slider handle height */
   background: navy;
   /* Green background */
-  margin-top: -13.5px;
+  /* Centre the 13px thumb on the 8px track: (8 - 13) / 2 */
+  margin-top: -2.5px;
   border-radius: 50%;
-}
-
-/* Define the CSS rule for the slider thumb when it has the 'iphone-slider' class */
-.iphone-slider::-webkit-slider-thumb {
-  margin-top: 0px;
 }
 
 .slider::-moz-range-thumb {
@@ -91,7 +87,8 @@ body {
   /* Slider handle height */
   background: blue;
   /* Green background */
-  margin-top: -13.5px;
+  /* Firefox centres -moz-range-thumb on the track by itself. */
+  border: none;
   border-radius: 50%;
 }
 
