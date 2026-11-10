@@ -1,2 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Deploy scripts are piped to a remote /bin/sh; CRLF would break the shebang
+# and the heredoc terminators even when checked out on Windows.
+*.sh text eol=lf
