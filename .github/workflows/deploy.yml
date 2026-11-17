@@ -104,11 +104,31 @@ jobs:
             -e "ssh -i ~/.ssh/deploy_key -p $SSH_PORT -o StrictHostKeyChecking=yes" \
             build/ "$SSH_USER@$SSH_HOST:$MIRROR_ROOT/"
 
+      # Must run AFTER both rsyncs: the mirror sync uses --delete, so an
+      # .htaccess written before it would be deleted again.
+      #
+      # Hostinger serves index.html with max-age=604800, so a returning visitor
+      # can hold week-old HTML pointing at a bundle hash this deploy just
+      # deleted, and get a blank page. The script rewrites only the lines
+      # between its own markers, because public_html's .htaccess is shared with
+      # the sibling sites and is not in this repo.
+      - name: Apply no-cache rule for index.html
+        id: cache_rule
+        run: |
+          for root in "$REMOTE_ROOT" "$MIRROR_ROOT"; do
+            echo "--- $root ---"
+            ssh -i ~/.ssh/deploy_key -p "$SSH_PORT" -o StrictHostKeyChecking=yes \
+              "$SSH_USER@$SSH_HOST" "sh -s -- '$root' apply" \
+              < deploy/apply-cache-headers.sh
+          done
+          echo "applied=true" >> "$GITHUB_OUTPUT"
+
       - name: Verify both sites serve the same build
         run: |
           bundle=$(basename $(ls build/static/js/main.*.js))
           for host in nextworldatlas.com history.nextworldatlas.com; do
-            html=$(curl -sS --retry 3 --retry-delay 5 "https://$host/?ci=$GITHUB_RUN_ID")
+            headers=$(mktemp)
+            html=$(curl -sS --retry 3 --retry-delay 5 -D "$headers" "https://$host/?ci=$GITHUB_RUN_ID")
             if echo "$html" | grep -q "$bundle"; then
               echo "ok: $host serving $bundle"
             else
@@ -116,7 +136,30 @@ jobs:
               echo "$html" | head -20
               exit 1
             fi
+            cc=$(tr -d '\r' < "$headers" | grep -i '^cache-control:' || true)
+            if echo "$cc" | grep -qi 'no-cache'; then
+              echo "ok: $host index.html is not cached ($cc)"
+            else
+              echo "::error::$host index.html is still cacheable (got: ${cc:-no header}). Stale HTML can point at a deleted bundle."
+              exit 1
+            fi
           done
+
+      # Hostinger runs LiteSpeed, and the live .htaccess cannot be inspected
+      # from outside, so this rule is first proven in production. If anything
+      # downstream fails -- a 500 from the new directives, or the header simply
+      # not taking -- put both docroots back exactly as they were rather than
+      # leaving a half-applied change behind. Runs before the key is wiped.
+      - name: Roll back the no-cache rule if verification failed
+        if: failure() && steps.cache_rule.outputs.applied == 'true'
+        run: |
+          for root in "$REMOTE_ROOT" "$MIRROR_ROOT"; do
+            echo "--- reverting $root ---"
+            ssh -i ~/.ssh/deploy_key -p "$SSH_PORT" -o StrictHostKeyChecking=yes \
+              "$SSH_USER@$SSH_HOST" "sh -s -- '$root' remove" \
+              < deploy/apply-cache-headers.sh || echo "revert of $root failed"
+          done
+          echo "::warning::Rolled back the index.html no-cache rule on both docroots."
 
       - name: Clean up key
         if: always()
