@@ -206,9 +206,10 @@ export default function App() {
     }
   }, [map.current, currentyear])
 
-  const startyear = -3000
-  const endyear = 2023
-  const stepYear = 100
+  // The timeline snaps to the years that have map data, one per source in
+  // source-geojson.json. Keep this list in step with that file.
+  const timelineYears = mapSources.map(s => parseInt(s.name.replace('world_', ''), 10))
+  const yearIndex = Math.max(0, timelineYears.indexOf(defaultyear))
   
   // This is a relic of the original source. The two variables should be combined.
   useEffect(()=>{
@@ -309,7 +310,7 @@ export default function App() {
       spinMap()
       if(continuousTime - prevTime.current >= incrementDuration * 1000){
         prevTime.current = continuousTime
-        setDefaultYear((defaultyear + stepYear)%(2000 + stepYear))
+        setDefaultYear(timelineYears[(yearIndex + 1) % timelineYears.length])
       }
     }
   }, [continuousTime])
@@ -333,14 +334,12 @@ export default function App() {
         <div className="map-overlay-inner">
           <h2>Historical Timeline</h2>
             <div id="sliderholder">
-              <input id="slider" className="slider" value={defaultyear} type="range" step={stepYear} list="tickmarks" max={endyear} min={startyear} onChange={e=>setDefaultYear(e.target.value)}></input>
+              <input id="slider" className="slider" value={yearIndex} type="range" step={1} min={0} max={timelineYears.length - 1} onChange={e=>setDefaultYear(timelineYears[parseInt(e.target.value, 10)])}></input>
             </div>
             <div id="year">{defaultyear} CE</div>
-          <datalist id="tickmarks">
-          </datalist>
           <div className="timeline-labels">
-            <span>3000BC</span>
-            <span>2000CE</span>
+            <span>{timelineYears[0]} CE</span>
+            <span>{timelineYears[timelineYears.length - 1]} CE</span>
           </div>
           <div>{spinEnabled? 'Next era in: ' + (20-(continuousTime/1000)%20).toFixed(0) + ' seconds':''}</div>
         </div>
