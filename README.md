@@ -58,9 +58,10 @@ Required repo secrets — Settings → Secrets and variables → Actions:
 
 ### public_html is shared — do not add a blanket `--delete`
 
-Three other sites sit inside `public_html` as subdirectories: `airportrouteatlas/`,
-`bookings/`, and `guesspolis/`. A top-level `rsync --delete` (or an FTP action's
-default sync-with-delete) would erase all three.
+Another site, `bookings/`, sits inside `public_html` as a subdirectory. A top-level
+`rsync --delete` (or an FTP action's default sync-with-delete) would erase it.
+(`airportrouteatlas/` and `guesspolis/` used to be duplicated here too; they are
+served from their own subdomain docroots, and the in-`public_html` copies were retired.)
 
 (A fourth, `test/`, was a stale copy of this app and the last consumer of the
 `raw.githubusercontent` URLs. It was moved to `~/test.retired-2026-08-04` on

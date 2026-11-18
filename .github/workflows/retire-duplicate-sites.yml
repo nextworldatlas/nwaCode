@@ -1,0 +1,115 @@
+name: Retire duplicate sites from public_html (manual)
+
+# One-off. airportrouteatlas/ and guesspolis/ were copied inside ~/public_html
+# even though each is served from its own subdomain docroot under ~/domains/.
+# Run with mode=inspect first (read-only), then mode=delete.
+#
+# Never runs on push; only from the Actions tab.
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "inspect = read-only report. delete = back up, then remove."
+        type: choice
+        options: [inspect, delete]
+        default: inspect
+
+concurrency:
+  group: deploy-production # never overlap a deploy
+  cancel-in-progress: false
+
+env:
+  SSH_HOST: 62.72.50.247
+  SSH_PORT: 65002
+  SSH_USER: u857656583
+
+jobs:
+  retire:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up SSH
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/deploy_key
+          chmod 600 ~/.ssh/deploy_key
+          ssh-keyscan -p "$SSH_PORT" -H "$SSH_HOST" >> ~/.ssh/known_hosts 2>/dev/null
+
+      - name: Inspect, and delete only if every check passes
+        env:
+          MODE: ${{ inputs.mode }}
+        run: |
+          ssh -i ~/.ssh/deploy_key -p "$SSH_PORT" -o StrictHostKeyChecking=yes \
+            "$SSH_USER@$SSH_HOST" "MODE='$MODE' sh -s" <<'REMOTE'
+          set -u
+          stamp=$(date +%Y-%m-%d)
+          fail=0
+
+          echo "== docroots under ~/domains =="
+          for d in "$HOME"/domains/*/public_html; do
+            [ -e "$d" ] || continue
+            printf '%s -> %s | index.html: %s | entries: %s\n' \
+              "$d" "$(readlink -f "$d")" \
+              "$([ -f "$d/index.html" ] && echo yes || echo NO)" \
+              "$(ls -A "$d" | wc -l)"
+          done
+
+          for site in airportrouteatlas guesspolis; do
+            target="$HOME/public_html/$site"
+            echo
+            echo "================ $site ================"
+            if [ ! -e "$target" ]; then echo "already gone: $target"; continue; fi
+
+            real=$(readlink -f "$target")
+            echo "path:     $target"
+            echo "resolves: $real"
+            echo "symlink:  $([ -L "$target" ] && echo YES || echo no)"
+            echo "size:     $(du -sh "$target" | cut -f1), files: $(find "$target" -type f | wc -l)"
+            echo "index:    $([ -f "$target/index.html" ] && echo yes || echo no)"
+
+            ok=1
+            # 1. Must be a real directory physically inside public_html.
+            [ -L "$target" ] && { echo "CHECK FAILED: is a symlink"; ok=0; }
+            case "$real" in "$HOME/public_html/$site") ;; *) echo "CHECK FAILED: resolves outside public_html/$site"; ok=0 ;; esac
+
+            # 2. No other docroot may be (or live inside) this folder.
+            for d in "$HOME"/domains/*/public_html; do
+              [ -e "$d" ] || continue
+              r=$(readlink -f "$d")
+              case "$r" in "$real"|"$real"/*) echo "CHECK FAILED: docroot $d lives inside it"; ok=0 ;; esac
+            done
+            # Nor may anything under ~/domains symlink into it.
+            if find "$HOME/domains" -maxdepth 4 -type l -lname "*public_html/$site*" 2>/dev/null | grep -q .; then
+              echo "CHECK FAILED: a symlink under ~/domains points into it"; ok=0
+            fi
+
+            # 3. A separate docroot for this site must exist and be non-empty.
+            own=$(ls -d "$HOME"/domains/*"$site"*/public_html 2>/dev/null | head -1)
+            if [ -z "$own" ]; then
+              echo "CHECK FAILED: no ~/domains/*$site*/public_html found"; ok=0
+            else
+              echo "own docroot: $own ($(ls -A "$own" | wc -l) entries, index.html: $([ -f "$own/index.html" ] && echo yes || echo NO))"
+              [ -f "$own/index.html" ] || { echo "CHECK FAILED: own docroot has no index.html"; ok=0; }
+            fi
+
+            if [ "$ok" -ne 1 ]; then fail=1; echo ">> $site: NOT safe to delete"; continue; fi
+            echo ">> $site: all checks passed"
+
+            if [ "$MODE" = delete ]; then
+              bak="$HOME/retired-$site-$stamp.tar.gz"
+              tar -czf "$bak" -C "$HOME/public_html" "$site" && echo "backup: $bak ($(du -sh "$bak" | cut -f1))" \
+                || { echo "backup FAILED, not deleting"; fail=1; continue; }
+              rm -rf -- "$HOME/public_html/$site" && echo "deleted: $target"
+            fi
+          done
+
+          echo
+          if [ "$MODE" = delete ]; then
+            echo "== siblings still present =="
+            [ -d "$HOME/public_html/bookings" ] && echo "ok: bookings" || { echo "MISSING: bookings"; fail=1; }
+          fi
+          exit $fail
+          REMOTE
+
+      - name: Clean up key
+        if: always()
+        run: rm -f ~/.ssh/deploy_key
