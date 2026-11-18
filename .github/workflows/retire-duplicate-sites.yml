@@ -43,6 +43,10 @@ jobs:
           set -u
           stamp=$(date +%Y-%m-%d)
           fail=0
+          # On Hostinger ~/public_html is itself a link to
+          # ~/domains/<main-domain>/public_html, so resolve it first.
+          main_root=$(readlink -f "$HOME/public_html")
+          echo "public_html resolves to: $main_root"
 
           echo "== docroots under ~/domains =="
           for d in "$HOME"/domains/*/public_html; do
@@ -69,7 +73,7 @@ jobs:
             ok=1
             # 1. Must be a real directory physically inside public_html.
             [ -L "$target" ] && { echo "CHECK FAILED: is a symlink"; ok=0; }
-            case "$real" in "$HOME/public_html/$site") ;; *) echo "CHECK FAILED: resolves outside public_html/$site"; ok=0 ;; esac
+            case "$real" in "$main_root/$site") ;; *) echo "CHECK FAILED: resolves outside $main_root/$site"; ok=0 ;; esac
 
             # 2. No other docroot may be (or live inside) this folder.
             for d in "$HOME"/domains/*/public_html; do
@@ -82,23 +86,32 @@ jobs:
               echo "CHECK FAILED: a symlink under ~/domains points into it"; ok=0
             fi
 
-            # 3. A separate docroot for this site must exist and be non-empty.
-            own=$(ls -d "$HOME"/domains/*"$site"*/public_html 2>/dev/null | head -1)
-            if [ -z "$own" ]; then
-              echo "CHECK FAILED: no ~/domains/*$site*/public_html found"; ok=0
-            else
-              echo "own docroot: $own ($(ls -A "$own" | wc -l) entries, index.html: $([ -f "$own/index.html" ] && echo yes || echo NO))"
-              [ -f "$own/index.html" ] || { echo "CHECK FAILED: own docroot has no index.html"; ok=0; }
-            fi
+            # 3. At least one separate docroot for this site must exist with an
+            #    index.html. Report every candidate and what the copy has that
+            #    they lack, so nothing unique is deleted unseen.
+            found=0
+            for own in "$HOME"/domains/*"$site"*/public_html "$HOME"/domains/airportroutes.*/public_html; do
+              [ -d "$own" ] || continue
+              case "$site:$own" in
+                airportrouteatlas:*airportrouteatlas*|airportrouteatlas:*airportroutes.*|guesspolis:*guesspolis*) ;;
+                *) continue ;;
+              esac
+              hasidx=$([ -f "$own/index.html" ] && echo yes || echo NO)
+              echo "own docroot: $own | $(du -sh "$own" | cut -f1), $(find "$own" -type f | wc -l) files | index.html: $hasidx"
+              only=$( (cd "$target" && find . -type f | sort) > /tmp/a.$$; (cd "$own" && find . -type f | sort) > /tmp/b.$$; comm -23 /tmp/a.$$ /tmp/b.$$ | wc -l; rm -f /tmp/a.$$ /tmp/b.$$ )
+              echo "   files in the public_html copy that this docroot lacks: $only"
+              [ "$hasidx" = yes ] && found=1
+            done
+            [ "$found" -eq 1 ] || { echo "CHECK FAILED: no separate docroot with an index.html for $site"; ok=0; }
 
             if [ "$ok" -ne 1 ]; then fail=1; echo ">> $site: NOT safe to delete"; continue; fi
             echo ">> $site: all checks passed"
 
             if [ "$MODE" = delete ]; then
               bak="$HOME/retired-$site-$stamp.tar.gz"
-              tar -czf "$bak" -C "$HOME/public_html" "$site" && echo "backup: $bak ($(du -sh "$bak" | cut -f1))" \
+              tar -czf "$bak" -C "$main_root" "$site" && echo "backup: $bak ($(du -sh "$bak" | cut -f1))" \
                 || { echo "backup FAILED, not deleting"; fail=1; continue; }
-              rm -rf -- "$HOME/public_html/$site" && echo "deleted: $target"
+              rm -rf -- "$main_root/$site" && echo "deleted: $target"
             fi
           done
 
